@@ -31,21 +31,21 @@ puts "\n"
 
 ## And finally let's look at a conditional to see if Sanic is cool and if he's having a party.
 if friends.count > cool_level && friends.count > party_level
-	puts "#{name} is pretty darn cool, so he's having a party.\nHis friends are:\n• #{friends.join("\n• ")}"
-	if friends.include?("Tails")
-		puts "Since Tails is here, this party can fly!"
-	else
-	end
+  puts "#{name} is pretty darn cool, so he's having a party.\nHis friends are:\n• #{friends.join("\n• ")}"
+  if friends.include?("Tails")
+    puts "Since Tails is here, this party can fly!"
+  else
+  end
 elsif friends.count > cool_level && friends.count < party_level
-	puts "#{name} is pretty darn cool, but not cool enough to have a party.\nHis friends are:\n• #{friends.join("\n• ")}"
-	if friends.include?("Tails")
-		puts "At least Tails is here, so we can fly!"
-	else
-	end
+  puts "#{name} is pretty darn cool, but not cool enough to have a party.\nHis friends are:\n• #{friends.join("\n• ")}"
+  if friends.include?("Tails")
+    puts "At least Tails is here, so we can fly!"
+  else
+  end
 else
-	puts "#{name} is kinda lame.\nHis only friends are:\n• #{friends.join("\n• ")}"
-	if friends.include?("Tails")
-		puts "Even though Tails is here, we can't fly because Tails is so depressed..."
-	else
-	end
+  puts "#{name} is kinda lame.\nHis only friends are:\n• #{friends.join("\n• ")}"
+  if friends.include?("Tails")
+    puts "Even though Tails is here, we can't fly because Tails is so depressed..."
+  else
+  end
 end
