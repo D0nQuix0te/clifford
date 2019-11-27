@@ -98,6 +98,13 @@ end
 # The sequence if the snitch is near a seeker!
 def snitch_sequence(team1_roster, team2_roster, scores, teams)
   puts "[ANNOUNCER 1]\nWait! They're closing in on the snitch!"
+  sleep 1
+  puts "[ANNOUNCER 2]\nWho will get there?"
+  sleep 2
+  puts "[ANNOUNCER 1]\nIt's gonna be close..."
+  sleep 1
+  puts "[ANNOUNCER 2]\nLook!"
+  sleep 1
   snitch_team = rand(2)
   seekers = [ seeker(team1_roster), seeker(team2_roster) ]
   if scores[snitch_team] == scores[1 - snitch_team] - 150 && scores[0] + scores[1] > 200
