@@ -90,7 +90,7 @@ def game_event(team1_roster, team2_roster, scores, teams)
     puts "[ANNOUNCER 1]\n#{hitter} on #{teams[team_chance]} just crushed #{teams[ 1 - team_chance ]} player #{target} with a bludger. #{hit_choice}"
     `say "#{hit_choice}"`
   elsif event_chance >= 80 && event_chance < 98
-    bored_statements = [ "Lots of movement but no big plays to report!", "BORING!", "Do something you bozos.", "That's not how you play Quidditch! You're doing nothing.", "They look like a bunch of muggles out there." ]
+    bored_statements = [ "Lots of movement but no big plays to report!", "BORING!", "Aim for the hoops! THE HOOPS!", "Do something you bozos.", "That's not how you play Quidditch! You're doing nothing.", "They look like a bunch of muggles out there." ]
     statement = bored_statements[rand(bored_statements.size)]
     puts "[ANNOUNCER 1]\n#{statement}"
     `say "#{statement}"`
@@ -250,6 +250,7 @@ def game
   end
   puts "[ANNOUNCER 1]\n#{winner} wins!\n"
   `say "#{winner} wins!"`
+  puts "\n"
   puts "[ANNOUNCER 2]\nThe player of the game is #{mvp}.\n"
   `say "The player of the game is #{mvp}!"`
   if winner == "Gryffindor"
