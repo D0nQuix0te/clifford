@@ -60,34 +60,35 @@ end
 def game_event(team1_roster, team2_roster, scores, teams)
   game_over = false
   event_chance = rand(100)
-  if event_chance < 20
+  team_chance = rand(2)
+  if team_chance == 0
     chasers = chasers(team1_roster)
-    scorer = chasers[rand(chasers.size)]
-    puts "[ANNOUNCER 1]\n#{scorer} has scored for #{teams[0]}!"
-    scores[0] = scores[0] + 10
-    puts "The score is now #{teams[0]} #{scores[0]} - #{teams[1]} #{scores[1]}."
-  elsif event_chance >= 20 && event_chance < 40
-    chasers = chasers(team2_roster)
-    scorer = chasers[rand(chasers.size)]
-    puts "[ANNOUNCER 1]\n#{scorer} has scored for #{teams[1]}!"
-    scores[1] = scores[1] + 10
-    puts "The score is now #{teams[0]} #{scores[0]} - #{teams[1]} #{scores[1]}."
-  elsif event_chance >= 40 && event_chance < 50
     keeper = keeper(team1_roster)
-    puts "[ANNOUNCER 1]\n#{keeper} with a stupendous save for #{teams[0]}!"
-  elsif event_chance >= 50 && event_chance < 60
-    keeper = keeper(team2_roster)
-    puts "[ANNOUNCER 1]\n#{keeper} with an incredible save for #{teams[1]}!"
-  elsif event_chance >= 60 && event_chance < 70
     beaters = beaters(team1_roster)
-    hitter = beaters[rand(beaters.size)]
-    puts "[ANNOUNCER 1]\n#{hitter} on #{teams[0]} just crushed #{teams[1]} player #{team2_roster[rand(team2_roster.size)]} with a bludger. Bone crushing!"
-    `say "Bone crushing!"`
-  elsif event_chance >= 70 && event_chance < 80
+    target = team2_roster[rand(team2_roster.size)]
+  elsif team_chance == 1
+    chasers = chasers(team2_roster)
+    keeper = keeper(team2_roster)
     beaters = beaters(team2_roster)
+    target = team1_roster[rand(team1_roster.size)]
+  end
+  if event_chance < 40
+    scorer = chasers[rand(chasers.size)]
+    puts "[ANNOUNCER 1]\n#{scorer} scores for #{teams[team_chance]}!"
+    scores[team_chance] = scores[team_chance] + 10
+    `say "Goal for #{teams[team_chance]}!"`
+    puts "The score is now #{teams[0]} #{scores[0]} - #{teams[1]} #{scores[1]}."
+  elsif event_chance >= 40 && event_chance < 60
+    save_type = [ "absurd save", "stupendous save", "mystical save"]
+    save_choice = save_type[rand(save_type.size)]
+    puts "[ANNOUNCER 1]\n#{keeper} with the #{save_choice} for #{teams[team_chance]}!"
+    `say "#{save_choice}!"`
+  elsif event_chance >= 60 && event_chance < 80
     hitter = beaters[rand(beaters.size)]
-    puts "[ANNOUNCER 1]\n#{hitter} on #{teams[1]} just crushed #{teams[0]} player #{team1_roster[rand(team1_roster.size)]} with a bludger. That's a broken bone I think!"
-    `say "That's a broken bone I think!"`
+    hit_type = [ "Bone crushing!", "That's broken!", "CRUNCH!"]
+    hit_choice = hit_type[rand(hit_type.size)]
+    puts "[ANNOUNCER 1]\n#{hitter} on #{teams[team_chance]} just crushed #{teams[ 1 - team_chance ]} player #{target} with a bludger. #{hit_choice}"
+    `say "#{hit_choice}"`
   elsif event_chance >= 80 && event_chance < 98
     bored_statements = [ "Lots of movement but no big plays to report!", "BORING!", "Do something you bozos.", "That's not how you play Quidditch! You're doing nothing.", "They look like a bunch of muggles out there." ]
     statement = bored_statements[rand(bored_statements.size)]
@@ -214,7 +215,7 @@ def game
   puts "[REFEREE]\nBrooms up players..."
   `say "Brooms up players..."`
   puts "\n"
-  sleep 3
+  sleep 2
   puts "[WHISTLE]\nBBRRRGHHHHHHH!"
   puts "\n"
   sleep 1
@@ -222,7 +223,7 @@ def game
   puts "\n"
 
   loop do
-    sleep_timer = [ 0.1, 0.25, 0.5 ]
+    sleep_timer = [ 0.1, 0.2, 0.3 ]
     sleep sleep_timer[rand(sleep_timer.size)]
     game_over = game_event(team1_roster, team2_roster, scores, teams)
     phrases = [ "GREAT GRINGOTTS!", "Crazy game!", "Quidditch is quite grand.", "The player who must not be named!", "That'll be on the Daily Prophet front page!", "Are they drinking unicorn blood?", "What a performance we're seeing!", "Magical! Just magical!", "BOOMSHAKALAKA!", "The stuff of witchcraft legends!", "Even a muggle would love that.", "I'm speechless. DID YOU SEE THAT?" ]
