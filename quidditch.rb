@@ -74,18 +74,18 @@ def game_event(team1_roster, team2_roster, scores, teams)
     puts "The score is now #{teams[0]} #{scores[0]} - #{teams[1]} #{scores[1]}."
   elsif event_chance >= 40 && event_chance < 50
     keeper = keeper(team1_roster)
-    puts "[ANNOUNCER 1]\n#{keeper} with a fantastic save for #{teams[0]}!"
+    puts "[ANNOUNCER 1]\n#{keeper} with a stupendous save for #{teams[0]}!"
   elsif event_chance >= 50 && event_chance < 60
     keeper = keeper(team2_roster)
     puts "[ANNOUNCER 1]\n#{keeper} with an incredible save for #{teams[1]}!"
   elsif event_chance >= 60 && event_chance < 70
     beaters = beaters(team1_roster)
     hitter = beaters[rand(beaters.size)]
-    puts "[ANNOUNCER 1]\n#{hitter} on #{teams[0]} just crushed #{teams[1]} player #{team2_roster[rand(team2_roster.size)]}. Bone crushing!"
+    puts "[ANNOUNCER 1]\n#{hitter} on #{teams[0]} just crushed #{teams[1]} player #{team2_roster[rand(team2_roster.size)]} with a bludger. Bone crushing!"
   elsif event_chance >= 70 && event_chance < 80
     beaters = beaters(team2_roster)
     hitter = beaters[rand(beaters.size)]
-    puts "[ANNOUNCER 1]\n#{hitter} on #{teams[1]} just crushed #{teams[0]} player #{team1_roster[rand(team1_roster.size)]}. Great Gringotts!"
+    puts "[ANNOUNCER 1]\n#{hitter} on #{teams[1]} just crushed #{teams[0]} player #{team1_roster[rand(team1_roster.size)]} with a bludger. Great Gringotts!"
   elsif event_chance >= 80 && event_chance < 98
     puts "[ANNOUNCER 1]\nLots of movement but no big plays to report!"
   elsif event_chance >= 98 && event_chance < 100
@@ -98,27 +98,31 @@ end
 # The sequence if the snitch is near a seeker!
 def snitch_sequence(team1_roster, team2_roster, scores, teams)
   puts "[ANNOUNCER 1]\nWait! They're closing in on the snitch!"
+  puts "\n"
   sleep 1
   puts "[ANNOUNCER 2]\nWho will get there?"
+  puts "\n"
   sleep 2
   puts "[ANNOUNCER 1]\nIt's gonna be close..."
+  puts "\n"
   sleep 1
   puts "[ANNOUNCER 2]\nLook!"
+  puts "\n"
   sleep 1
   snitch_team = rand(2)
   seekers = [ seeker(team1_roster), seeker(team2_roster) ]
   if scores[snitch_team] == scores[1 - snitch_team] - 150 && scores[0] + scores[1] > 200
   # if scores[0] == scores[1] - 150 && scores[0] + scores[1] > 100
     scores[snitch_team] = scores[snitch_team] + 150
-    puts "#{seekers[snitch_team]} has caught the golden snitch for #{teams[snitch_team]}! 150 points and the tie!"
+    puts "[ANNOUNCER 1]\n#{seekers[snitch_team]} has caught the golden snitch for #{teams[snitch_team]}! 150 points and the tie!"
     caught = true
   elsif scores[snitch_team] > scores[1 - snitch_team] - 150
   # elsif scores[0] > scores[1] - 150
     scores[snitch_team] = scores[snitch_team] + 150
-    puts "#{seekers[snitch_team]} has caught the golden snitch for #{teams[snitch_team]}! 150 points and the win!"
+    puts "[ANNOUNCER 1]\n#{seekers[snitch_team]} has caught the golden snitch for #{teams[snitch_team]}! 150 points and the win!"
     caught = true
   else
-    puts "#{seekers[snitch_team]} on #{teams[snitch_team]} blocks #{seekers[1 - snitch_team]} from getting the golden snitch and the win for #{teams[1 - snitch_team]}!"
+    puts "[ANNOUNCER 1]\n#{seekers[snitch_team]} on #{teams[snitch_team]} blocks #{seekers[1 - snitch_team]} from getting the golden snitch and the win for #{teams[1 - snitch_team]}!"
     caught = false
   end
   caught
@@ -131,7 +135,7 @@ def game
   teams = select_teams
   game_over = false
 
-  puts "Welcome to Thrillmot's Quidditch Simulator!"
+  puts "\nWelcome to Thrillmot's Quidditch Simulator!"
   puts "\n"
   puts "============================================="
   puts "============================================="
@@ -198,11 +202,12 @@ def game
   puts "\n"
 
   loop do
-    sleep 1
+    sleep 2
     game_over = game_event(team1_roster, team2_roster, scores, teams)
     phrases = [ "Crazy game!", "Quidditch is incredible.", "What a performance we're seeing!", "Magical! Just magical!", "BOOMSHAKALAKA!", "The stuff of witchcraft legends!", "Even a muggle would love that.", "I'm speechless. DID YOU SEE THAT?" ]
     chatty = rand(3)
     if chatty == 0
+      sleep 1
       puts "[ANNOUNCER 2]\n#{phrases[rand(phrases.size)]}"
       puts "\n"
     end
