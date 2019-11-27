@@ -202,12 +202,12 @@ def game
   puts "\n"
 
   loop do
-    sleep 2
+    sleep 1.5
     game_over = game_event(team1_roster, team2_roster, scores, teams)
     phrases = [ "Crazy game!", "Quidditch is incredible.", "What a performance we're seeing!", "Magical! Just magical!", "BOOMSHAKALAKA!", "The stuff of witchcraft legends!", "Even a muggle would love that.", "I'm speechless. DID YOU SEE THAT?" ]
     chatty = rand(3)
     if chatty == 0
-      sleep 1
+      sleep 0.5
       puts "[ANNOUNCER 2]\n#{phrases[rand(phrases.size)]}"
       puts "\n"
     end
