@@ -82,12 +82,17 @@ def game_event(team1_roster, team2_roster, scores, teams)
     beaters = beaters(team1_roster)
     hitter = beaters[rand(beaters.size)]
     puts "[ANNOUNCER 1]\n#{hitter} on #{teams[0]} just crushed #{teams[1]} player #{team2_roster[rand(team2_roster.size)]} with a bludger. Bone crushing!"
+    `say "Bone crushing!"`
   elsif event_chance >= 70 && event_chance < 80
     beaters = beaters(team2_roster)
     hitter = beaters[rand(beaters.size)]
-    puts "[ANNOUNCER 1]\n#{hitter} on #{teams[1]} just crushed #{teams[0]} player #{team1_roster[rand(team1_roster.size)]} with a bludger. Great Gringotts!"
+    puts "[ANNOUNCER 1]\n#{hitter} on #{teams[1]} just crushed #{teams[0]} player #{team1_roster[rand(team1_roster.size)]} with a bludger. That's a broken bone I think!"
+    `say "That's a broken bone I think!"`
   elsif event_chance >= 80 && event_chance < 98
-    puts "[ANNOUNCER 1]\nLots of movement but no big plays to report!"
+    bored_statements = [ "Lots of movement but no big plays to report!", "BORING!", "Do something you bozos.", "That's not how you play Quidditch! You're doing nothing.", "They look like a bunch of muggles out there." ]
+    statement = bored_statements[rand(bored_statements.size)]
+    puts "[ANNOUNCER 1]\n#{statement}"
+    `say "#{statement}"`
   elsif event_chance >= 98 && event_chance < 100
     game_over = snitch_sequence(team1_roster, team2_roster, scores, teams)
   end
@@ -98,31 +103,34 @@ end
 # The sequence if the snitch is near a seeker!
 def snitch_sequence(team1_roster, team2_roster, scores, teams)
   puts "[ANNOUNCER 1]\nWait! They're closing in on the snitch!"
+  `say "Wait! They're closing in on the snitch!"`
   puts "\n"
-  sleep 1
   puts "[ANNOUNCER 2]\nWho will get there?"
+  `say "Who will get there?"`
   puts "\n"
-  sleep 2
   puts "[ANNOUNCER 1]\nIt's gonna be close..."
+  `say "It's gonna be close..."`
   puts "\n"
-  sleep 1
   puts "[ANNOUNCER 2]\nLook!"
+  `say "Look!"`
   puts "\n"
-  sleep 1
   snitch_team = rand(2)
   seekers = [ seeker(team1_roster), seeker(team2_roster) ]
   if scores[snitch_team] == scores[1 - snitch_team] - 150 && scores[0] + scores[1] > 200
   # if scores[0] == scores[1] - 150 && scores[0] + scores[1] > 100
     scores[snitch_team] = scores[snitch_team] + 150
     puts "[ANNOUNCER 1]\n#{seekers[snitch_team]} has caught the golden snitch for #{teams[snitch_team]}! 150 points and the tie!"
+    `say "#{seekers[snitch_team]} has caught the golden snitch for #{teams[snitch_team]}! 150 points and the tie!"`
     caught = true
   elsif scores[snitch_team] > scores[1 - snitch_team] - 150
   # elsif scores[0] > scores[1] - 150
     scores[snitch_team] = scores[snitch_team] + 150
     puts "[ANNOUNCER 1]\n#{seekers[snitch_team]} has caught the golden snitch for #{teams[snitch_team]}! 150 points and the win!"
+    `say "#{seekers[snitch_team]} has caught the golden snitch for #{teams[snitch_team]}! 150 points and the win!"`
     caught = true
   else
     puts "[ANNOUNCER 1]\n#{seekers[snitch_team]} on #{teams[snitch_team]} blocks #{seekers[1 - snitch_team]} from getting the golden snitch and the win for #{teams[1 - snitch_team]}!"
+    `say "#{seekers[snitch_team]} on #{teams[snitch_team]} blocks #{seekers[1 - snitch_team]} from getting the golden snitch and the win for #{teams[1 - snitch_team]}!"`
     caught = false
   end
   caught
@@ -136,22 +144,30 @@ def game
   game_over = false
 
   puts "\nWelcome to Thrillmot's Quidditch Simulator!"
+  puts "(turn your sound on!)"
+  `say "Welcome to Thrillmot's Quidditch Simulator"`
   puts "\n"
   puts "============================================="
+  sleep 0.25
   puts "============================================="
   puts "              _            _.,----,"
+  sleep 0.25
   puts " __  _.-._ / '-.        -  ,._  \\) "
   puts "|  `-)_   '-.   \\       / < _ )/\" }"
   puts "/__    '-.   \\   '-, ___(c-(6)=(6)"
+  sleep 0.5
   puts " , `'.    `._ '.  _,'   >\\    \"  )"
   puts " :;;,,'-._   '---' (  ( \"/`. -='/"
   puts ";:;;:;;,  '..__    ,`-.`)'- '--'"
+  sleep 0.25
   puts ";';:;;;;;'-._ /'._|   Y/   _/' \\"
   puts "      '''\"._ F    |  _/ _.'._   `\\"
   puts "             L    \\   \\/     '._  \\"
+  sleep 0.25
   puts "      .-,-,_ |     `.  `'---,  \\_ _|"
   puts "      //    'L    /  \\,   (\"--',=`)7"
   puts "     | `._       : _,  \\  /'`-._L,_'-._"
+  sleep 0.75
   puts "     '--' '-.\\__/ _L   .`'         './/"
   puts "                 [ (  /"
   puts "                  ) `{"
@@ -159,13 +175,15 @@ def game
   puts "============================================="
   puts "============================================="
   puts "\n"
+  sleep 1
 
   puts "[ANNOUNCER 1]\nToday's matchup is between #{teams[0]} and #{teams[1]}."
+  `say "Today's matchup is between #{teams[0]} and #{teams[1]}."`
   puts "\n"
   sleep 1
 
   team1_roster = select_team1_roster(players)
-  puts "[ANNOUNCER 1]\nThe #{teams[0]} roster is:"
+  puts "[ANNOUNCER 2]\nThe #{teams[0]} roster is:"
   n = 0
   while n < positions.size do
     puts "• #{positions[n]}: #{team1_roster[n]}"
@@ -175,7 +193,7 @@ def game
   sleep 2
 
   team2_roster = select_team2_roster(players, team1_roster)
-  puts "[ANNOUNCER 2]\nWhile the #{teams[1]} roster is:"
+  puts "[ANNOUNCER 1]\nWhile the #{teams[1]} roster is:"
   n = 0
   while n < positions.size do
     puts "• #{positions[n]}: #{team2_roster[n]}"
@@ -187,28 +205,32 @@ def game
   team1_score = 0
   team2_score = 0
   scores = [ team1_score, team2_score ]
-  puts "[ANNOUNCER 1]\nLet's get today's game started. The score is #{teams[0]} #{scores[0]} - #{teams[1]} #{scores[1]} because that's how games start."
+  puts "[ANNOUNCER 2]\nLet's get today's game started. The score is #{teams[0]} #{scores[0]} - #{teams[1]} #{scores[1]} because that's how games start."
   puts "\n"
   sleep 1
-  puts "[ANNOUNCER 2]\nI can't wait!"
+  puts "[ANNOUNCER 1]\nI can't wait!"
   puts "\n"
   sleep 1
   puts "[REFEREE]\nBrooms up players..."
+  `say "Brooms up players..."`
   puts "\n"
   sleep 3
   puts "[WHISTLE]\nBBRRRGHHHHHHH!"
   puts "\n"
+  sleep 1
   puts "[ANNOUNCER 1]\nAnd we're off!"
   puts "\n"
 
   loop do
-    sleep 1.5
+    sleep_timer = [ 0.1, 0.25, 0.5 ]
+    sleep sleep_timer[rand(sleep_timer.size)]
     game_over = game_event(team1_roster, team2_roster, scores, teams)
-    phrases = [ "Crazy game!", "Quidditch is incredible.", "What a performance we're seeing!", "Magical! Just magical!", "BOOMSHAKALAKA!", "The stuff of witchcraft legends!", "Even a muggle would love that.", "I'm speechless. DID YOU SEE THAT?" ]
+    phrases = [ "GREAT GRINGOTTS!", "Crazy game!", "Quidditch is quite grand.", "The player who must not be named!", "That'll be on the Daily Prophet front page!", "Are they drinking unicorn blood?", "What a performance we're seeing!", "Magical! Just magical!", "BOOMSHAKALAKA!", "The stuff of witchcraft legends!", "Even a muggle would love that.", "I'm speechless. DID YOU SEE THAT?" ]
     chatty = rand(3)
     if chatty == 0
-      sleep 0.5
-      puts "[ANNOUNCER 2]\n#{phrases[rand(phrases.size)]}"
+      comment = phrases[rand(phrases.size)]
+      puts "[ANNOUNCER 2]\n#{comment}"
+      `say "#{comment}"`
       puts "\n"
     end
     if game_over == true
@@ -216,13 +238,19 @@ def game
     end
   end
   puts "[ANNOUNCER 1]\nThe final score is #{teams[0]} #{scores[0]} - #{teams[1]} #{scores[1]}."
+  `say "The final score is #{teams[0]} #{scores[0]}, #{teams[1]} #{scores[1]}."`
   puts "\n"
   if scores[0] > scores[1]
     winner = teams[0]
+    mvp = team1_roster[rand(team1_roster.size)]
   elsif scores [1] > scores[0]
     winner = teams[1]
+    mvp = team2_roster[rand(team2_roster.size)]
   end
   puts "[ANNOUNCER 1]\n#{winner} wins!\n"
+  `say "#{winner} wins!"`
+  puts "[ANNOUNCER 2]\nThe player of the game is #{mvp}.\n"
+  `say "The player of the game is #{mvp}!"`
   if winner == "Gryffindor"
     puts "                    ,."
     puts "                    ,_> `.   ,';"
@@ -307,7 +335,7 @@ def game
     puts "  ,' - / /        / /\\ =  - /MM(,,._`YQMML  `|"
     puts " <_,=^Kkm / / / / ///H|wnWWdMKKK#\"\"-;. `\"0\\  |"
     puts "        `\"\"QkmmmmmnWMMM\\\"\"WHMKKMM\\   `--. \\> \\"
-    puts " hjm          `\"\"'  `->>>    ``WHMb,.    `-_<@)"
+    puts "              `\"\"'  `->>>    ``WHMb,.    `-_<@)"
     puts "                                `\"QMM`."
     puts "                                   `>>>"
   end   
