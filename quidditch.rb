@@ -63,57 +63,58 @@ def game_event(team1_roster, team2_roster, scores, teams)
   if event_chance < 20
     chasers = chasers(team1_roster)
     scorer = chasers[rand(chasers.size)]
-    puts "#{scorer} has scored for #{teams[0]}!"
+    puts "[ANNOUNCER 1]\n#{scorer} has scored for #{teams[0]}!"
     scores[0] = scores[0] + 10
     puts "The score is now #{teams[0]} #{scores[0]} - #{teams[1]} #{scores[1]}."
   elsif event_chance >= 20 && event_chance < 40
     chasers = chasers(team2_roster)
     scorer = chasers[rand(chasers.size)]
-    puts "#{scorer} has scored for #{teams[1]}!"
+    puts "[ANNOUNCER 1]\n#{scorer} has scored for #{teams[1]}!"
     scores[1] = scores[1] + 10
     puts "The score is now #{teams[0]} #{scores[0]} - #{teams[1]} #{scores[1]}."
   elsif event_chance >= 40 && event_chance < 50
     keeper = keeper(team1_roster)
-    puts "#{keeper} with a fantastic save for #{teams[0]}!"
+    puts "[ANNOUNCER 1]\n#{keeper} with a fantastic save for #{teams[0]}!"
   elsif event_chance >= 50 && event_chance < 60
     keeper = keeper(team2_roster)
-    puts "#{keeper} with an incredible save for #{teams[1]}!"
+    puts "[ANNOUNCER 1]\n#{keeper} with an incredible save for #{teams[1]}!"
   elsif event_chance >= 60 && event_chance < 70
     beaters = beaters(team1_roster)
     hitter = beaters[rand(beaters.size)]
-    puts "#{hitter} on #{teams[0]} just crushed #{teams[1]} player #{team2_roster[rand(team2_roster.size)]}. Bone crushing!"
+    puts "[ANNOUNCER 1]\n#{hitter} on #{teams[0]} just crushed #{teams[1]} player #{team2_roster[rand(team2_roster.size)]}. Bone crushing!"
   elsif event_chance >= 70 && event_chance < 80
     beaters = beaters(team2_roster)
     hitter = beaters[rand(beaters.size)]
-    puts "#{hitter} on #{teams[1]} just crushed #{teams[0]} player #{team1_roster[rand(team1_roster.size)]}. Great Gringotts!"
+    puts "[ANNOUNCER 1]\n#{hitter} on #{teams[1]} just crushed #{teams[0]} player #{team1_roster[rand(team1_roster.size)]}. Great Gringotts!"
   elsif event_chance >= 80 && event_chance < 98
-    puts "Lots of movement but no big plays to report!"
+    puts "[ANNOUNCER 1]\nLots of movement but no big plays to report!"
   elsif event_chance >= 98 && event_chance < 100
     game_over = snitch_sequence(team1_roster, team2_roster, scores, teams)
   end
+  puts "\n"
   game_over
 end
 
 # The sequence if the snitch is near a seeker!
 def snitch_sequence(team1_roster, team2_roster, scores, teams)
-  puts "Wait! They're closing in on the snitch!"
+  puts "[ANNOUNCER 1]\nWait! They're closing in on the snitch!"
   snitch_team = rand(2)
   seekers = [ seeker(team1_roster), seeker(team2_roster) ]
   if scores[snitch_team] == scores[1 - snitch_team] - 150 && scores[0] + scores[1] > 200
   # if scores[0] == scores[1] - 150 && scores[0] + scores[1] > 100
     scores[snitch_team] = scores[snitch_team] + 150
     puts "#{seekers[snitch_team]} has caught the golden snitch for #{teams[snitch_team]}! 150 points and the tie!"
-    game_over = true
+    caught = true
   elsif scores[snitch_team] > scores[1 - snitch_team] - 150
   # elsif scores[0] > scores[1] - 150
     scores[snitch_team] = scores[snitch_team] + 150
     puts "#{seekers[snitch_team]} has caught the golden snitch for #{teams[snitch_team]}! 150 points and the win!"
-    game_over = true
+    caught = true
   else
     puts "#{seekers[snitch_team]} on #{teams[snitch_team]} blocks #{seekers[1 - snitch_team]} from getting the golden snitch and the win for #{teams[1 - snitch_team]}!"
-    game_over = false
+    caught = false
   end
-  game_over
+  caught
 end
 
 # Let's play a game of Quidditch!
@@ -124,6 +125,9 @@ def game
   game_over = false
 
   puts "Welcome to Thrillmot's Quidditch Simulator!"
+  puts "\n"
+  puts "============================================="
+  puts "============================================="
   puts "              _            _.,----,"
   puts " __  _.-._ / '-.        -  ,._  \\) "
   puts "|  `-)_   '-.   \\       / < _ )/\" }"
@@ -141,37 +145,50 @@ def game
   puts "                 [ (  /"
   puts "                  ) `{"
   puts "                  \\__)"
+  puts "============================================="
+  puts "============================================="
+  puts "\n"
 
-  puts "Today's matchup is between #{teams[0]} and #{teams[1]}."
+  puts "[ANNOUNCER 1]\nToday's matchup is between #{teams[0]} and #{teams[1]}."
+  puts "\n"
   sleep 1
 
   team1_roster = select_team1_roster(players)
-  puts "The #{teams[0]} roster is:"
+  puts "[ANNOUNCER 1]\nThe #{teams[0]} roster is:"
   n = 0
   while n < positions.size do
     puts "• #{positions[n]}: #{team1_roster[n]}"
     n += 1
   end
+  puts "\n"
   sleep 2
 
   team2_roster = select_team2_roster(players, team1_roster)
-  puts "The #{teams[1]} roster is:"
+  puts "[ANNOUNCER 2]\nWhile the #{teams[1]} roster is:"
   n = 0
   while n < positions.size do
     puts "• #{positions[n]}: #{team2_roster[n]}"
     n += 1
   end
+  puts "\n"
   sleep 2
 
   team1_score = 0
   team2_score = 0
   scores = [ team1_score, team2_score ]
-  puts "Let's get today's game started. The score is #{teams[0]} #{scores[0]} - #{teams[1]} #{scores[1]} because that's how games start."
+  puts "[ANNOUNCER 1]\nLet's get today's game started. The score is #{teams[0]} #{scores[0]} - #{teams[1]} #{scores[1]} because that's how games start."
+  puts "\n"
   sleep 1
-  puts "REFEREE: Brooms up players!"
+  puts "[ANNOUNCER 2]\nI can't wait!"
+  puts "\n"
+  sleep 1
+  puts "[REFEREE]\nBrooms up players..."
+  puts "\n"
   sleep 3
-  puts "[whistle sound] BBRRRGHHHHHHH!"
-  puts "And we're off!"
+  puts "[WHISTLE]\nBBRRRGHHHHHHH!"
+  puts "\n"
+  puts "[ANNOUNCER 1]\nAnd we're off!"
+  puts "\n"
 
   loop do
     sleep 1
@@ -179,13 +196,109 @@ def game
     phrases = [ "Crazy game!", "Quidditch is incredible.", "What a performance we're seeing!", "Magical! Just magical!", "BOOMSHAKALAKA!", "The stuff of witchcraft legends!", "Even a muggle would love that.", "I'm speechless. DID YOU SEE THAT?" ]
     chatty = rand(3)
     if chatty == 0
-      puts phrases[rand(phrases.size)]
+      puts "[ANNOUNCER 2]\n#{phrases[rand(phrases.size)]}"
+      puts "\n"
     end
     if game_over == true
       break
     end
   end
-  puts "The final score is #{teams[0]} #{scores[0]} - #{teams[1]} #{scores[1]}."
+  puts "[ANNOUNCER 1]\nThe final score is #{teams[0]} #{scores[0]} - #{teams[1]} #{scores[1]}."
+  puts "\n"
+  if scores[0] > scores[1]
+    winner = teams[0]
+  elsif scores [1] > scores[0]
+    winner = teams[1]
+  end
+  puts "[ANNOUNCER 1]\n#{winner} wins!\n"
+  if winner == "Gryffindor"
+    puts "                    ,."
+    puts "                    ,_> `.   ,';"
+    puts "                ,-`'      `'   '`'._"
+    puts "             ,,-) ---._   |   .---''`-),."
+    puts "           ,'      `.  \\  ;  /   _,'     `,"
+    puts "        ,--' ____       \\   '  ,'    ___  `-,"
+    puts "       _>   /--. `-.              .-'.--\\   \\__"
+    puts "      '-,  (    `.  `.,`~ \\~'-. ,' ,'    )    _\\"
+    puts "      _>    \\     \\ ,'  ') )   `. /     /    <,."
+    puts "   ,-'   _,  \\    ,'    ( /      `.    /        `-,"
+    puts "   `-.,-'     `.,'       `         `.,'  `\\    ,-'"
+    puts "    ,'       _  /   ,,,      ,,,     \\     `-. `-._"
+    puts "   /-,     ,'  ;   ' _ \\    / _ `     ; `.     `(`-\\"
+    puts "    /-,        ;    (o)      (o)      ;          `'`,"
+    puts "  ,~-'  ,-'    \\     '        `      /     \\      <_"
+    puts "  /-. ,'        \\                   /       \\     ,-'"
+    puts "    '`,     ,'   `-/             \\-' `.      `-. <"
+    puts "     /_    /      /   (_     _)   \\    \\          `,"
+    puts "       `-._;  ,' |  .::.`-.-' :..  |       `-.    _\\"
+    puts "         _/       \\  `:: ,^. :.:' / `.        \\,-'"
+    puts "       '`.   ,-'  /`-..-'-.-`-..-'\\            `-."
+    puts "         >_ /     ;  (\\/( ' )\\/)  ;     `-.    _<"
+    puts "         ,-'      `.  \\`-^^^-'/  ,'        \\ _<"
+    puts "          `-,  ,'   `. `\"\"\"\"\"' ,'   `-.   <`'"
+    puts "            ')        `._.,,_.'        \\ ,-'"
+    puts "             '._        '`'`'   \\       <"
+    puts "                >   ,'       ,   `-.   <`'"
+    puts "                 `,/          \\      ,-`"
+    puts "                  `,   ,' |   /     /"
+    puts "                   '; /   ;        ("
+    puts "                    _)|   `       ("
+    puts "                    `')         .-'"
+    puts "                      <_   \\   /"
+    puts "                        \\   /\\("
+    puts "                         `;/  `"
+  elsif winner == "Slytherin"
+    puts "       ---_ ......._-_--."
+    puts "      (|\\ /      / /| \\  \\"
+    puts "      /  /     .'  -=-'   `."
+    puts "     /  /    .'             )"
+    puts "   _/  /   .'        _.)   /"
+    puts "  / o   o        _.-' /  .'"
+    puts "  \\          _.-'    / .'*|"
+    puts "   \\______.-'//    .'.' \\*|"
+    puts "    \\|  \\ | //   .'.' _ |*|"
+    puts "     `   \\|//  .'.'_ _ _|*|"
+    puts "      .  .// .'.' | _ _ \\*|"
+    puts "      \\`-|\\_/ /    \ _ _ \\*\\"
+    puts "       `/'\__/      \\ _ _ \\*\\"
+    puts "      /^|            \\ _ _ \\*"
+    puts "     '  `             \\ _ _ \\"
+  elsif winner == "Ravenclaw"
+    puts "                                                 ,::::.._"
+    puts "                                               ,':::::::::."
+    puts "                                           _,-'`:::,::(o)::`-,.._"
+    puts "                                        _.', ', `:::::::::;'-..__`."
+    puts "                                   _.-'' ' ,' ,' ,\\:::,'::-`'''"
+    puts "                               _.-'' , ' , ,'  ' ,' `:::/"
+    puts "                         _..-'' , ' , ' ,' , ,' ',' '/::"
+    puts "                 _...:::'`-..'_, ' , ,'  , ' ,'' , ,'::|"
+    puts "              _`.:::::,':::::,'::`-:..'_',_'_,'..-'::,'|"
+    puts "      _..-:::'::,':::::::,':::,':,'::,':::,'::::::,':::;"
+    puts "        `':,'::::::,:,':::::::::::::::::':::,'::_:::,'/"
+    puts "        __..:'::,':::::::--''' `-:,':,':::'::-' ,':::/"
+    puts "   _.::::::,:::.-''-`-`..'_,'. ,',  , ' , ,'  ', `','"
+    puts " ,::SSt:''''`                 \\:. . ,' '  ,',' '_,'"
+    puts "                               ``::._,'_'_,',.-'"
+    puts "                                   \\\\ \\\\"
+    puts "                                    \\\\_\\\\"
+    puts "                                     \\\\`-`.-'_"
+    puts "                                  .`-.\\\\__`. ``"
+    puts "                                     ``-.-._"
+    puts "                                         `"
+  elsif winner == "Hufflepuff"
+    puts "                ___,,___"
+    puts "           _,-='=- =-  -`\"--.__,,.._"
+    puts "        ,-;// /  - -       -   -= - \"=."
+    puts "      ,'///    -     -   -   =  - ==-=\\`."
+    puts "     |/// /  =    `. - =   == - =.=_,,._ `=/|"
+    puts "    ///    -   -    \\  - - = ,ndDMHHMM/\\b  \\\\"
+    puts "  ,' - / /        / /\\ =  - /MM(,,._`YQMML  `|"
+    puts " <_,=^Kkm / / / / ///H|wnWWdMKKK#\"\"-;. `\"0\\  |"
+    puts "        `\"\"QkmmmmmnWMMM\\\"\"WHMKKMM\\   `--. \\> \\"
+    puts " hjm          `\"\"'  `->>>    ``WHMb,.    `-_<@)"
+    puts "                                `\"QMM`."
+    puts "                                   `>>>"
+  end   
 end
 
 game
