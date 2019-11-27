@@ -76,8 +76,8 @@ def game_event(team1_roster, team2_roster, scores, teams)
     scorer = chasers[rand(chasers.size)]
     puts "[ANNOUNCER 1]\n#{scorer} scores for #{teams[team_chance]}!"
     scores[team_chance] = scores[team_chance] + 10
-    `say "Goal for #{teams[team_chance]}!"`
     puts "The score is now #{teams[0]} #{scores[0]} - #{teams[1]} #{scores[1]}."
+    `say "Goal for #{teams[team_chance]}!"`
   elsif event_chance >= 40 && event_chance < 60
     save_type = [ "absurd save", "stupendous save", "mystical save"]
     save_choice = save_type[rand(save_type.size)]
@@ -90,7 +90,7 @@ def game_event(team1_roster, team2_roster, scores, teams)
     puts "[ANNOUNCER 1]\n#{hitter} on #{teams[team_chance]} just crushed #{teams[ 1 - team_chance ]} player #{target} with a bludger. #{hit_choice}"
     `say "#{hit_choice}"`
   elsif event_chance >= 80 && event_chance < 98
-    bored_statements = [ "Lots of movement but no big plays to report!", "BORING!", "Aim for the hoops! THE HOOPS!", "Do something you bozos.", "That's not how you play Quidditch! You're doing nothing.", "They look like a bunch of muggles out there." ]
+    bored_statements = [ "Lots of movement but no big plays!", "Still #{scores[0]} to #{scores[1]}.", "BORING!", "Aim for the hoops! THE HOOPS!", "Do something you bozos.", "That's not how you play Quidditch! You're doing nothing.", "They look like a bunch of muggles out there." ]
     statement = bored_statements[rand(bored_statements.size)]
     puts "[ANNOUNCER 1]\n#{statement}"
     `say "#{statement}"`
@@ -226,7 +226,7 @@ def game
     sleep_timer = [ 0.1, 0.2, 0.3 ]
     sleep sleep_timer[rand(sleep_timer.size)]
     game_over = game_event(team1_roster, team2_roster, scores, teams)
-    phrases = [ "GREAT GRINGOTTS!", "Crazy game!", "Quidditch is quite grand.", "The player who must not be named!", "That'll be on the Daily Prophet front page!", "Are they drinking unicorn blood?", "What a performance we're seeing!", "Magical! Just magical!", "BOOMSHAKALAKA!", "The stuff of witchcraft legends!", "Even a muggle would love that.", "I'm speechless. DID YOU SEE THAT?" ]
+    phrases = [ "GREAT GRINGOTTS!", "Crazy game!", "Quidditch is quite grand.", "It's #{scores[0]} to #{scores[1]}.", "The player who must not be named!", "That'll be on the Daily Prophet front page!", "Are they drinking unicorn blood?", "What a performance we're seeing!", "Magical! Just magical!", "BOOMSHAKALAKA!", "The stuff of witchcraft legends!", "Even a muggle would love that.", "I'm speechless. DID YOU SEE THAT?" ]
     chatty = rand(3)
     if chatty == 0
       comment = phrases[rand(phrases.size)]
