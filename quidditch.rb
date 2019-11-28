@@ -48,13 +48,15 @@ def beaters(team_roster)
   beaters = [ team_roster[3], team_roster[4] ]
 end
 
-def keeper(team_roster)
-  keeper = team_roster[5]
+def seeker(team_roster)
+  seeker = team_roster[5]
 end
 
-def seeker(team_roster)
-  seeker = team_roster[6]
+def keeper(team_roster)
+  keeper = team_roster[6]
 end
+
+
 
 # Let's define game events where either team 1 scores, team 2 scores, team 1 saves, team 2 saves, team 1 bludgeons, team 2 bludgeons, nothing happens, or the snitch is caught.
 def game_event(team1_roster, team2_roster, scores, teams)
