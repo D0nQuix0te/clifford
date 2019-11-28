@@ -168,7 +168,7 @@ def game
   puts "      .-,-,_ |     `.  `'---,  \\_ _|"
   puts "      //    'L    /  \\,   (\"--',=`)7"
   puts "     | `._       : _,  \\  /'`-._L,_'-._"
-  sleep 0.75
+  sleep 0.25
   puts "     '--' '-.\\__/ _L   .`'         './/"
   puts "                 [ (  /"
   puts "                  ) `{"
@@ -198,30 +198,33 @@ def game
   puts "\n"
   sleep 1
 
-  team1_roster = select_team1_roster(players)
-  puts "[ANNOUNCER 2]\nThe #{teams[0]} roster is:"
-  n = 0
-  while n < positions.size do
-    puts "• #{positions[n]}: #{team1_roster[n]}"
-    n += 1
+  def position_roster(positions, team_roster)
+    n = 0
+    while n < positions.size do
+      puts "• #{positions[n]}: #{team_roster[n]}"
+      `say "#{positions[n]}: #{team_roster[n]}"`
+      n += 1
+    end
+    puts "\n"
+    sleep 1
   end
-  puts "\n"
-  sleep 2
+
+  team1_roster = select_team1_roster(players)
+  
+  puts "[ANNOUNCER 2]\nThe #{teams[0]} roster is:"
+  `say "The #{teams[0]} roster is:"`
+  position_roster(positions, team1_roster)
 
   team2_roster = select_team2_roster(players, team1_roster)
   puts "[ANNOUNCER 1]\nWhile the #{teams[1]} roster is:"
-  n = 0
-  while n < positions.size do
-    puts "• #{positions[n]}: #{team2_roster[n]}"
-    n += 1
-  end
-  puts "\n"
-  sleep 2
+  `say "While the #{teams[1]} roster is:"`
+  position_roster(positions, team2_roster)
 
   team1_score = 0
   team2_score = 0
   scores = [ team1_score, team2_score ]
   puts "[ANNOUNCER 2]\nLet's get today's game started. The score is #{teams[0]} #{scores[0]} - #{teams[1]} #{scores[1]} because that's how games start."
+  `say "Let's get today's game started."`
   puts "\n"
   sleep 1
   puts "[ANNOUNCER 1]\nI can't wait!"
