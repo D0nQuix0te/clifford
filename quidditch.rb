@@ -90,7 +90,7 @@ def game_event(team1_roster, team2_roster, scores, teams)
     puts "[THRILLIUS MOTT]\n#{hitter} on #{teams[team_chance]} just crushed #{teams[ 1 - team_chance ]} player #{target} with a bludger. #{hit_choice}"
     `say "#{hitter} bludgeoned #{target}. #{hit_choice}"`
   elsif event_chance >= 80 && event_chance < 98
-    bored_statements = [ "Lots of movement but no big plays!", "Still #{scores[0]} to #{scores[1]}.", "BORING!", "Aim for the hoops! THE HOOPS!", "Do something you bozos.", "That's not how you play Quidditch! You're doing nothing.", "They look like a bunch of muggles out there." ]
+    bored_statements = [ "Lots of movement but no big plays, Clifton!", "Still #{scores[0]} to #{scores[1]}.", "BORING!", "Aim for the hoops! THE HOOPS!", "Do something you bozos.", "That's not how you play Quidditch! You're doing nothing.", "They look like a bunch of muggles out there, Clifton." ]
     statement = bored_statements[rand(bored_statements.size)]
     puts "[THRILLIUS MOTT]\n#{statement}"
     `say "#{statement}"`
@@ -250,7 +250,7 @@ def game
     sleep_timer = [ 0.1, 0.2, 0.3 ]
     sleep sleep_timer[rand(sleep_timer.size)]
     game_over = game_event(team1_roster, team2_roster, scores, teams)
-    phrases = [ "GREAT GRINGOTTS!", "Crazy game!", "Quidditch is quite grand.", "It's #{scores[0]} to #{scores[1]}.", "The player who must not be named!", "That'll be on the Daily Prophet front page!", "Are they drinking unicorn blood?", "What a performance we're seeing!", "Magical! Just magical!", "BOOMSHAKALAKA!", "The stuff of witchcraft legends!", "Even a muggle would love that.", "I'm speechless. DID YOU SEE THAT?" ]
+    phrases = [ "GREAT GRINGOTTS THRILLIUS!", "Crazy game!", "Quidditch is quite grand.", "It's #{scores[0]} to #{scores[1]}.", "The player who must not be named!", "That'll be on the Daily Prophet front page Thrillius!", "Are they drinking unicorn blood, Thrillius?", "What a performance we're seeing!", "Magical! Just magical!", "BOOMSHAKALAKA!", "The stuff of witchcraft legends!", "Even a muggle would love that.", "I'm speechless. DID YOU SEE THAT?" ]
     chatty = rand(3)
     if chatty == 0
       comment = phrases[rand(phrases.size)]
