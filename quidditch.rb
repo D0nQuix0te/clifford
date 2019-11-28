@@ -181,6 +181,21 @@ def game
   puts "[ANNOUNCER 1]\nToday's matchup is between #{teams[0]} and #{teams[1]}."
   `say "Today's matchup is between #{teams[0]} and #{teams[1]}."`
   puts "\n"
+  puts "[GAMBLING GOBLIN]\nWhat team do you want to bet on?"
+  `say "What team do you want to bet on?"`
+
+  bet_team = gets.strip
+
+  puts "\n"
+  puts "[GAMBLING GOBLIN]\nHow much do you want to bet?"
+  `say "How much do you want to bet?"`
+
+  bet_amount = gets.strip
+
+  puts "\n"
+  puts "You bet #{bet_amount} galleons on #{bet_team}."
+  `say "You bet #{bet_amount} galleons on #{bet_team}."`
+  puts "\n"
   sleep 1
 
   team1_roster = select_team1_roster(players)
@@ -340,7 +355,16 @@ def game
     puts "              `\"\"'  `->>>    ``WHMb,.    `-_<@)"
     puts "                                `\"QMM`."
     puts "                                   `>>>"
-  end   
+  end
+  if winner == bet
+    puts "[GAMBLING GOBLIN]\nYou won your bet. Galleons galore! #{bet_amount} to be exact."
+    `say "You won your bet. Galleons galore! #{bet_amount} to be exact."`
+    puts "\n"
+  else
+    puts "[GAMBLING GOBLIN]\nYou lost your bet. Maybe you can't spell. Either way, you owe me. #{bet_amount} to be exact."
+    `say "You lost your bet. Maybe you can't spell. Either way, you owe me galleons. #{bet_amount} to be exact."`
+    puts "\n"
+  end
 end
 
 game
