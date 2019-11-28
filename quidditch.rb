@@ -87,7 +87,7 @@ def game_event(team1_roster, team2_roster, scores, teams)
     `say "#{keeper} with a #{save_choice}!"`
   elsif event_chance >= 60 && event_chance < 80
     hitter = beaters[rand(beaters.size)]
-    hit_type = [ "Bone crushing!", "That's broken!", "CRUNCH!", "Bones are broken!", "Big time bruises there.", "Ouch.", "That's gonna leave a dark mark.", "Bludgeon attack!", "Bludging spree!", "Beater beatdown!", "Boom goes the bludegon." ]
+    hit_type = [ "Bone crushing!", "That's broken!", "CRUNCH!", "Bones are broken!", "Big time bruises there.", "Ouch.", "That's gonna leave a dark mark.", "Bludgeon attack!", "Bludging spree!", "Beater beatdown!", "Boom goes the bludgeon." ]
     hit_choice = hit_type[rand(hit_type.size)]
     puts "[THRILLIUS MOTT]\n#{hitter} on #{teams[team_chance]} just crushed #{teams[ 1 - team_chance ]} player #{target} with a bludger. #{hit_choice}"
     `say "#{hitter} bludgeoned #{target}. #{hit_choice}"`
@@ -248,6 +248,7 @@ def game
   puts "\n"
   sleep 1
   puts "[THRILLIUS MOTT]\nAnd we're off!"
+  `say "And we're off!"`
   puts "\n"
 
   loop do
