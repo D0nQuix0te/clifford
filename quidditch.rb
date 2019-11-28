@@ -91,12 +91,12 @@ def game_event(team1_roster, team2_roster, scores, teams)
     hit_choice = hit_type[rand(hit_type.size)]
     puts "[THRILLIUS MOTT]\n#{hitter} on #{teams[team_chance]} just crushed #{teams[ 1 - team_chance ]} player #{target} with a bludger. #{hit_choice}"
     `say "#{hitter} bludgeoned #{target}. #{hit_choice}"`
-  elsif event_chance >= 80 && event_chance < 98
+  elsif event_chance >= 80 && event_chance < 97
     bored_statements = [ "Lots of movement but no big plays. Thoughts Clifton?", "Still #{scores[0]} to #{scores[1]} here Clifton.", "Maybe. Maybe?", "BORING!", "Aim for the hoops! THE HOOPS!", "Do something you bozos. What do you think, Clifton?", "That's not how you play Quidditch! You're doing nothing.", "They look like a bunch of muggles out there, Clifton.", "What was that?", "Um. Clifton, are you seeing this?", "They just keep going in circles, Clifton.", "This could not have been the game plan, Clifton.", "Where did that come from?", "Give me some analysis Clifton.", "Clifton, you're a legend of the game. Tell me why they just did that.", "Did you ever see that in your day Thrillius?", "Tell the audience what you see, Clifton!", "No way. Thoughts, Clifton?", "We're still watching, but not much is happening.", "That's a pass!", "Steals it!", "From left. To right. And back again.", "They begin to move upfield.", "Speedy shuffle pass.", "There's the one-two combo!", "Can they get there?", "Here they come!", "Okay then...", "No can do that!", "That's a sure thing.", "They better not mess this up!", "So, what now Clifton?", "Give me a hot take Clifton." ]
     statement = bored_statements[rand(bored_statements.size)]
     puts "[THRILLIUS MOTT]\n#{statement}"
     `say "#{statement}"`
-  elsif event_chance >= 98 && event_chance < 100
+  elsif event_chance >= 97 && event_chance < 100
     game_over = snitch_sequence(team1_roster, team2_roster, scores, teams)
   end
   puts "\n"
@@ -117,7 +117,7 @@ def snitch_sequence(team1_roster, team2_roster, scores, teams)
   puts "[CLIFTON HAZELNUTS]\nLook!"
   `say "Look!"`
   puts "\n"
-  snitch_roll = rand(4)
+  snitch_roll = rand(5)
   seekers = [ seeker(team1_roster), seeker(team2_roster) ]
   if snitch_roll < 2
     if scores[snitch_roll] == scores[1 - snitch_roll] - 150 && scores[0] + scores[1] > 200
