@@ -179,10 +179,10 @@ def game
   sleep 1
 
   puts "[THRILLIUS MOTT]\nI'm Thrillius Mott."
-  `says "I'm Thrillius Mott."`
+  `say "I'm Thrillius Mott."`
   puts "\n"
   puts "[CLIFTON HAZELNUTS]\nAnd I'm Clifton Hazelnuts. Welcome to QSPN."
-  `says "And I'm Clifton Hazelnuts. Welcome to QSPN."`
+  `say "And I'm Clifton Hazelnuts. Welcome to QSPN."`
   puts "\n"
   puts "[THRILLIUS MOTT]\nToday's matchup is between #{teams[0]} and #{teams[1]}."
   `say "Today's matchup is between #{teams[0]} and #{teams[1]}."`
