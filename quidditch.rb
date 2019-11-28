@@ -304,6 +304,7 @@ def game
     puts "                      <_   \\   /"
     puts "                        \\   /\\("
     puts "                         `;/  `"
+    puts "\n"
   elsif winner == "Slytherin"
     puts "       ---_ ......._-_--."
     puts "      (|\\ /      / /| \\  \\"
@@ -320,6 +321,7 @@ def game
     puts "       `/'\__/      \\ _ _ \\*\\"
     puts "      /^|            \\ _ _ \\*"
     puts "     '  `             \\ _ _ \\"
+    puts "\n"
   elsif winner == "Ravenclaw"
     puts "                                                 ,::::.._"
     puts "                                               ,':::::::::."
@@ -342,6 +344,7 @@ def game
     puts "                                  .`-.\\\\__`. ``"
     puts "                                     ``-.-._"
     puts "                                         `"
+    puts "\n"
   elsif winner == "Hufflepuff"
     puts "                ___,,___"
     puts "           _,-='=- =-  -`\"--.__,,.._"
@@ -355,13 +358,14 @@ def game
     puts "              `\"\"'  `->>>    ``WHMb,.    `-_<@)"
     puts "                                `\"QMM`."
     puts "                                   `>>>"
+    puts "\n"
   end
   if winner == bet_team
     puts "[GAMBLING GOBLIN]\nYou won your bet. Galleons galore! #{bet_amount} to be exact."
     `say "You won your bet. Galleons galore! #{bet_amount} to be exact."`
     puts "\n"
   else
-    puts "[GAMBLING GOBLIN]\nYou lost your bet. Maybe you can't spell. Either way, you owe me. #{bet_amount} to be exact."
+    puts "[GAMBLING GOBLIN]\nYou lost your bet. Maybe you can't spell. Either way, you owe me galleons. #{bet_amount} to be exact."
     `say "You lost your bet. Maybe you can't spell. Either way, you owe me galleons. #{bet_amount} to be exact."`
     puts "\n"
   end
