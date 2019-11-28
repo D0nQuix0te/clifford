@@ -232,7 +232,7 @@ def game
   team2_score = 0
   scores = [ team1_score, team2_score ]
   puts "[CLIFTON HAZELNUTS]\nLet's get today's game started. The score is #{teams[0]} #{scores[0]} - #{teams[1]} #{scores[1]} because that's how games start."
-  `say "Let's get today's game started."`
+  `say "Let's get today's game started. The score is #{teams[0]} #{scores[0]} to #{teams[1]} #{scores[1]} because that's how games start."`
   puts "\n"
   sleep 1
   puts "[THRILLIUS MOTT]\nI can't wait!"
