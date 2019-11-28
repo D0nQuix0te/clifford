@@ -193,7 +193,7 @@ def game
   bet_amount = gets.strip
 
   puts "\n"
-  puts "You bet #{bet_amount} galleons on #{bet_team}."
+  puts "[GAMBLING GOBLIN]\nYou bet #{bet_amount} galleons on #{bet_team}."
   `say "You bet #{bet_amount} galleons on #{bet_team}."`
   puts "\n"
   sleep 1
@@ -356,7 +356,7 @@ def game
     puts "                                `\"QMM`."
     puts "                                   `>>>"
   end
-  if winner == bet
+  if winner == bet_team
     puts "[GAMBLING GOBLIN]\nYou won your bet. Galleons galore! #{bet_amount} to be exact."
     `say "You won your bet. Galleons galore! #{bet_amount} to be exact."`
     puts "\n"
