@@ -117,9 +117,9 @@ def snitch_sequence(team1_roster, team2_roster, scores, teams)
   puts "[CLIFTON HAZELNUTS]\nLook!"
   `say "Look!"`
   puts "\n"
-  snitch_roll = rand(3)
+  snitch_roll = rand(4)
   seekers = [ seeker(team1_roster), seeker(team2_roster) ]
-  if snitch_roll != 2
+  if snitch_roll < 2
     if scores[snitch_roll] == scores[1 - snitch_roll] - 150 && scores[0] + scores[1] > 200
     # if scores[0] == scores[1] - 150 && scores[0] + scores[1] > 100
       scores[snitch_roll] = scores[snitch_roll] + 150
