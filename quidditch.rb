@@ -77,18 +77,18 @@ def game_event(team1_roster, team2_roster, scores, teams)
     puts "[ANNOUNCER 1]\n#{scorer} scores for #{teams[team_chance]}!"
     scores[team_chance] = scores[team_chance] + 10
     puts "The score is now #{teams[0]} #{scores[0]} - #{teams[1]} #{scores[1]}."
-    `say "Goal for #{teams[team_chance]}!"`
+    `say "#{scorer}. Goal for #{teams[team_chance]}!"`
   elsif event_chance >= 40 && event_chance < 60
     save_type = [ "absurd save", "stupendous save", "mystical save"]
     save_choice = save_type[rand(save_type.size)]
     puts "[ANNOUNCER 1]\n#{keeper} with the #{save_choice} for #{teams[team_chance]}!"
-    `say "#{save_choice}!"`
+    `say "#{keeper} with a #{save_choice}!"`
   elsif event_chance >= 60 && event_chance < 80
     hitter = beaters[rand(beaters.size)]
     hit_type = [ "Bone crushing!", "That's broken!", "CRUNCH!"]
     hit_choice = hit_type[rand(hit_type.size)]
     puts "[ANNOUNCER 1]\n#{hitter} on #{teams[team_chance]} just crushed #{teams[ 1 - team_chance ]} player #{target} with a bludger. #{hit_choice}"
-    `say "#{hit_choice}"`
+    `say "#{hitter} bludgeoned #{target}. #{hit_choice}"`
   elsif event_chance >= 80 && event_chance < 98
     bored_statements = [ "Lots of movement but no big plays!", "Still #{scores[0]} to #{scores[1]}.", "BORING!", "Aim for the hoops! THE HOOPS!", "Do something you bozos.", "That's not how you play Quidditch! You're doing nothing.", "They look like a bunch of muggles out there." ]
     statement = bored_statements[rand(bored_statements.size)]
