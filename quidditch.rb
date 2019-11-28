@@ -74,25 +74,25 @@ def game_event(team1_roster, team2_roster, scores, teams)
   end
   if event_chance < 40
     scorer = chasers[rand(chasers.size)]
-    puts "[ANNOUNCER 1]\n#{scorer} scores for #{teams[team_chance]}!"
+    puts "[THRILLIUS MOTT]\n#{scorer} scores for #{teams[team_chance]}!"
     scores[team_chance] = scores[team_chance] + 10
     puts "The score is now #{teams[0]} #{scores[0]} - #{teams[1]} #{scores[1]}."
     `say "#{scorer}. Goal for #{teams[team_chance]}!"`
   elsif event_chance >= 40 && event_chance < 60
     save_type = [ "absurd save", "stupendous save", "mystical save"]
     save_choice = save_type[rand(save_type.size)]
-    puts "[ANNOUNCER 1]\n#{keeper} with the #{save_choice} for #{teams[team_chance]}!"
+    puts "[THRILLIUS MOTT]\n#{keeper} with the #{save_choice} for #{teams[team_chance]}!"
     `say "#{keeper} with a #{save_choice}!"`
   elsif event_chance >= 60 && event_chance < 80
     hitter = beaters[rand(beaters.size)]
     hit_type = [ "Bone crushing!", "That's broken!", "CRUNCH!"]
     hit_choice = hit_type[rand(hit_type.size)]
-    puts "[ANNOUNCER 1]\n#{hitter} on #{teams[team_chance]} just crushed #{teams[ 1 - team_chance ]} player #{target} with a bludger. #{hit_choice}"
+    puts "[THRILLIUS MOTT]\n#{hitter} on #{teams[team_chance]} just crushed #{teams[ 1 - team_chance ]} player #{target} with a bludger. #{hit_choice}"
     `say "#{hitter} bludgeoned #{target}. #{hit_choice}"`
   elsif event_chance >= 80 && event_chance < 98
     bored_statements = [ "Lots of movement but no big plays!", "Still #{scores[0]} to #{scores[1]}.", "BORING!", "Aim for the hoops! THE HOOPS!", "Do something you bozos.", "That's not how you play Quidditch! You're doing nothing.", "They look like a bunch of muggles out there." ]
     statement = bored_statements[rand(bored_statements.size)]
-    puts "[ANNOUNCER 1]\n#{statement}"
+    puts "[THRILLIUS MOTT]\n#{statement}"
     `say "#{statement}"`
   elsif event_chance >= 98 && event_chance < 100
     game_over = snitch_sequence(team1_roster, team2_roster, scores, teams)
@@ -103,16 +103,16 @@ end
 
 # The sequence if the snitch is near a seeker!
 def snitch_sequence(team1_roster, team2_roster, scores, teams)
-  puts "[ANNOUNCER 1]\nWait! They're closing in on the snitch!"
+  puts "[THRILLIUS MOTT]\nWait! They're closing in on the snitch!"
   `say "Wait! They're closing in on the snitch!"`
   puts "\n"
-  puts "[ANNOUNCER 2]\nWho will get there?"
+  puts "[CLIFTON HAZELNUTS]\nWho will get there?"
   `say "Who will get there?"`
   puts "\n"
-  puts "[ANNOUNCER 1]\nIt's gonna be close..."
+  puts "[THRILLIUS MOTT]\nIt's gonna be close..."
   `say "It's gonna be close..."`
   puts "\n"
-  puts "[ANNOUNCER 2]\nLook!"
+  puts "[CLIFTON HAZELNUTS]\nLook!"
   `say "Look!"`
   puts "\n"
   snitch_team = rand(2)
@@ -120,17 +120,17 @@ def snitch_sequence(team1_roster, team2_roster, scores, teams)
   if scores[snitch_team] == scores[1 - snitch_team] - 150 && scores[0] + scores[1] > 200
   # if scores[0] == scores[1] - 150 && scores[0] + scores[1] > 100
     scores[snitch_team] = scores[snitch_team] + 150
-    puts "[ANNOUNCER 1]\n#{seekers[snitch_team]} has caught the golden snitch for #{teams[snitch_team]}! 150 points and the tie!"
+    puts "[THRILLIUS MOTT]\n#{seekers[snitch_team]} has caught the golden snitch for #{teams[snitch_team]}! 150 points and the tie!"
     `say "#{seekers[snitch_team]} has caught the golden snitch for #{teams[snitch_team]}! 150 points and the tie!"`
     caught = true
   elsif scores[snitch_team] > scores[1 - snitch_team] - 150
   # elsif scores[0] > scores[1] - 150
     scores[snitch_team] = scores[snitch_team] + 150
-    puts "[ANNOUNCER 1]\n#{seekers[snitch_team]} has caught the golden snitch for #{teams[snitch_team]}! 150 points and the win!"
+    puts "[THRILLIUS MOTT]\n#{seekers[snitch_team]} has caught the golden snitch for #{teams[snitch_team]}! 150 points and the win!"
     `say "#{seekers[snitch_team]} has caught the golden snitch for #{teams[snitch_team]}! 150 points and the win!"`
     caught = true
   else
-    puts "[ANNOUNCER 1]\n#{seekers[snitch_team]} on #{teams[snitch_team]} blocks #{seekers[1 - snitch_team]} from getting the golden snitch and the win for #{teams[1 - snitch_team]}!"
+    puts "[THRILLIUS MOTT]\n#{seekers[snitch_team]} on #{teams[snitch_team]} blocks #{seekers[1 - snitch_team]} from getting the golden snitch and the win for #{teams[1 - snitch_team]}!"
     `say "#{seekers[snitch_team]} on #{teams[snitch_team]} blocks #{seekers[1 - snitch_team]} from getting the golden snitch and the win for #{teams[1 - snitch_team]}!"`
     caught = false
   end
@@ -178,7 +178,13 @@ def game
   puts "\n"
   sleep 1
 
-  puts "[ANNOUNCER 1]\nToday's matchup is between #{teams[0]} and #{teams[1]}."
+  puts "[THRILLIUS MOTT]\nI'm Thrillius Mott."
+  `says "I'm Thrillius Mott."`
+  puts "\n"
+  puts "[CLIFTON HAZELNUTS]\nAnd I'm Clifton Hazelnuts. Welcome to QSPN."
+  `says "And I'm Clifton Hazelnuts. Welcome to QSPN."`
+  puts "\n"
+  puts "[THRILLIUS MOTT]\nToday's matchup is between #{teams[0]} and #{teams[1]}."
   `say "Today's matchup is between #{teams[0]} and #{teams[1]}."`
   puts "\n"
   puts "[GAMBLING GOBLIN]\nWhat team do you want to bet on?"
@@ -211,23 +217,23 @@ def game
 
   team1_roster = select_team1_roster(players)
   
-  puts "[ANNOUNCER 2]\nThe #{teams[0]} roster is:"
+  puts "[CLIFTON HAZELNUTS]\nThe #{teams[0]} roster is:"
   `say "The #{teams[0]} roster is:"`
   position_roster(positions, team1_roster)
 
   team2_roster = select_team2_roster(players, team1_roster)
-  puts "[ANNOUNCER 1]\nWhile the #{teams[1]} roster is:"
+  puts "[THRILLIUS MOTT]\nWhile the #{teams[1]} roster is:"
   `say "While the #{teams[1]} roster is:"`
   position_roster(positions, team2_roster)
 
   team1_score = 0
   team2_score = 0
   scores = [ team1_score, team2_score ]
-  puts "[ANNOUNCER 2]\nLet's get today's game started. The score is #{teams[0]} #{scores[0]} - #{teams[1]} #{scores[1]} because that's how games start."
+  puts "[CLIFTON HAZELNUTS]\nLet's get today's game started. The score is #{teams[0]} #{scores[0]} - #{teams[1]} #{scores[1]} because that's how games start."
   `say "Let's get today's game started."`
   puts "\n"
   sleep 1
-  puts "[ANNOUNCER 1]\nI can't wait!"
+  puts "[THRILLIUS MOTT]\nI can't wait!"
   puts "\n"
   sleep 1
   puts "[REFEREE]\nBrooms up players..."
@@ -237,7 +243,7 @@ def game
   puts "[WHISTLE]\nBBRRRGHHHHHHH!"
   puts "\n"
   sleep 1
-  puts "[ANNOUNCER 1]\nAnd we're off!"
+  puts "[THRILLIUS MOTT]\nAnd we're off!"
   puts "\n"
 
   loop do
@@ -248,7 +254,7 @@ def game
     chatty = rand(3)
     if chatty == 0
       comment = phrases[rand(phrases.size)]
-      puts "[ANNOUNCER 2]\n#{comment}"
+      puts "[CLIFTON HAZELNUTS]\n#{comment}"
       `say "#{comment}"`
       puts "\n"
     end
@@ -256,7 +262,7 @@ def game
       break
     end
   end
-  puts "[ANNOUNCER 1]\nThe final score is #{teams[0]} #{scores[0]} - #{teams[1]} #{scores[1]}."
+  puts "[THRILLIUS MOTT]\nThe final score is #{teams[0]} #{scores[0]} - #{teams[1]} #{scores[1]}."
   `say "The final score is #{teams[0]} #{scores[0]}, #{teams[1]} #{scores[1]}."`
   puts "\n"
   if scores[0] > scores[1]
@@ -266,10 +272,10 @@ def game
     winner = teams[1]
     mvp = team2_roster[rand(team2_roster.size)]
   end
-  puts "[ANNOUNCER 1]\n#{winner} wins!\n"
+  puts "[THRILLIUS MOTT]\n#{winner} wins!\n"
   `say "#{winner} wins!"`
   puts "\n"
-  puts "[ANNOUNCER 2]\nThe player of the game is #{mvp}.\n"
+  puts "[CLIFTON HAZELNUTS]\nThe player of the game is #{mvp}.\n"
   `say "The player of the game is #{mvp}!"`
   if winner == "Gryffindor"
     puts "                    ,."
