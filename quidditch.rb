@@ -74,25 +74,25 @@ def game_event(team1_roster, team2_roster, scores, teams)
     beaters = beaters(team2_roster)
     target = team1_roster[rand(team1_roster.size)]
   end
-  if event_chance < 40
+  if event_chance < 42
     scorer = chasers[rand(chasers.size)]
     puts "[THRILLIUS MOTT]\n#{scorer} scores for #{teams[team_chance]}!"
     scores[team_chance] = scores[team_chance] + 10
     puts "The score is now #{teams[0]} #{scores[0]} - #{teams[1]} #{scores[1]}."
     `say "#{scorer}. Goal for #{teams[team_chance]}!"`
-  elsif event_chance >= 40 && event_chance < 60
+  elsif event_chance >= 42 && event_chance < 61
     save_type = [ "absurd", "stupendous", "mystical", "flexible", "mind bending", "transfigure-tastic", "phoenician" ]
     save_choice = "#{save_type[rand(save_type.size)]} save"
     puts "[THRILLIUS MOTT]\n#{keeper} with the #{save_choice} for #{teams[team_chance]}!"
     `say "#{keeper} with a #{save_choice}!"`
-  elsif event_chance >= 60 && event_chance < 75
+  elsif event_chance >= 61 && event_chance < 80
     hitter = beaters[rand(beaters.size)]
     hit_type = [ "Bone crushing!", "That's broken!", "CRUNCH!", "Bones are broken!", "Big time bruises there.", "Ouch.", "That's gonna leave a dark mark.", "Bludgeon attack!", "Bludging spree!", "Beater beatdown!", "Boom goes the bludgeon." ]
     hit_choice = hit_type[rand(hit_type.size)]
     puts "[THRILLIUS MOTT]\n#{hitter} on #{teams[team_chance]} just crushed #{teams[ 1 - team_chance ]} player #{target} with a bludger. #{hit_choice}"
     `say "#{hitter} bludgeoned #{target}. #{hit_choice}"`
-  elsif event_chance >= 75 && event_chance < 97
-    bored_statements = [ "Lots of movement but no big plays. Thoughts Clifton?", "Still #{scores[0]} to #{scores[1]} here Clifton.", "Maybe. Maybe", "BORING!", "Aim for the hoops! THE HOOPS!", "Do something you bozos. What do you think, Clifton?", "That's not how you play Quidditch! You're doing nothing.", "They look like a bunch of muggles out there, Clifton.", "What was that?", "Um. Clifton, are you seeing this?", "They just keep going in circles, Clifton.", "This could not have been the game plan, Clifton.", "Where did that come from?", "Give me some analysis Clifton.", "Clifton, you're a legend of the game. Tell me why they just did that.", "Did you ever see that in your day Thrillius?", "Tell the audience what you, Clifton!", "No way. Thoughts, Clifton?", "We're still watching, but not much is happening.", "That's a pass!", "Steals it!", "From left. To right. And back again.", "They begin to move upfield.", "Speedy shuffle pass.", "There's the one-two combo!", "Can they get there?", "Here they come!", "Okay then?", "No can do that!", "That's a sure thing.", "They better not mess this up!", "So, what now Clifton?", "Give me a hot take Clifton." ]
+  elsif event_chance >= 80 && event_chance < 97
+    bored_statements = [ "Lots of movement but no big plays. Thoughts Clifton?", "Still #{scores[0]} to #{scores[1]} here Clifton.", "Maybe. Maybe?", "BORING!", "Aim for the hoops! THE HOOPS!", "Do something you bozos. What do you think, Clifton?", "That's not how you play Quidditch! You're doing nothing.", "They look like a bunch of muggles out there, Clifton.", "What was that?", "Um. Clifton, are you seeing this?", "They just keep going in circles, Clifton.", "This could not have been the game plan, Clifton.", "Where did that come from?", "Give me some analysis Clifton.", "Clifton, you're a legend of the game. Tell me why they just did that.", "Did you ever see that in your day Thrillius?", "Tell the audience what you see, Clifton!", "No way. Thoughts, Clifton?", "We're still watching, but not much is happening.", "That's a pass!", "Steals it!", "From left. To right. And back again.", "They begin to move upfield.", "Speedy shuffle pass.", "There's the one-two combo!", "Can they get there?", "Here they come!", "Okay then?", "No can do that!", "That's a sure thing.", "They better not mess this up!", "So, what now Clifton?", "Give me a hot take Clifton." ]
     statement = bored_statements[rand(bored_statements.size)]
     puts "[THRILLIUS MOTT]\n#{statement}"
     `say "#{statement}"`
