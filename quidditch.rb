@@ -139,8 +139,9 @@ def snitch_sequence(team1_roster, team2_roster, scores, teams)
     end
   else
     lost_snitch = [ "The seekers have collided and fallen off their brooms! What a disaster. The snitch has vanished.", "They're diving for the ground. And they hit it! The snitch didn't though. On we go.", "Look at that! A bludger just smacked them both off the trail. The snitch escapes!", "They just stopped. Maybe the sun got in their eyes? That's just bad seeking, but the snitch has faded back into oblivion." ]
-    puts "[THRILLIUS MOTT]\n#{lost_snitch}"
-    `say "#{lost_snitch}"`
+    lost_statement = lost_snitch[rand(lost_snitch.size)]
+    puts "[THRILLIUS MOTT]\n#{lost_statement}"
+    `say "#{lost_statement}"`
     caught = false
   end
   caught
