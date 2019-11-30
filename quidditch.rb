@@ -92,7 +92,7 @@ def game_event(team1_roster, team2_roster, scores, teams)
     puts "[THRILLIUS MOTT]\n#{hitter} on #{teams[team_chance]} just crushed #{teams[ 1 - team_chance ]} player #{target} with a bludger. #{hit_choice}"
     `say "#{hitter} bludgeoned #{target}. #{hit_choice}"`
   elsif event_chance >= 80 && event_chance < 97
-    bored_statements = [ "Lots of movement but no big plays. Thoughts Clifton?", "Still #{scores[0]} to #{scores[1]} here Clifton.", "Maybe. Maybe?", "BORING!", "Aim for the hoops! THE HOOPS!", "Do something you bozos. What do you think, Clifton?", "That's not how you play Quidditch! You're doing nothing.", "They look like a bunch of muggles out there, Clifton.", "What was that?", "Um. Clifton, are you seeing this?", "They just keep going in circles, Clifton.", "This could not have been the game plan, Clifton.", "Where did that come from?", "Give me some analysis Clifton.", "Clifton, you're a legend of the game. Tell me why they just did that.", "Did you ever see that in your day Thrillius?", "Tell the audience what you see, Clifton!", "No way. Thoughts, Clifton?", "We're still watching, but not much is happening.", "That's a pass!", "Steals it!", "From left. To right. And back again.", "They begin to move upfield.", "Speedy shuffle pass.", "There's the one-two combo!", "Can they get there?", "Here they come!", "Okay then...", "No can do that!", "That's a sure thing.", "They better not mess this up!", "So, what now Clifton?", "Give me a hot take Clifton." ]
+    bored_statements = [ "Lots of movement but no big plays. Thoughts Rear Admiral?", "Still #{scores[0]} to #{scores[1]} here Rear Admiral.", "Maybe. Maybe?", "BORING!", "Aim for the hoops! THE HOOPS!", "Do something you bozos. What do you think, Rear Admiral?", "That's not how you play Quidditch! You're doing nothing.", "They look like a bunch of muggles out there, Rear Admiral.", "What was that?", "Um. Rear Admiral, are you seeing this?", "They just keep going in circles, Rear Admiral.", "This could not have been the game plan, Rear Admiral.", "Where did that come from?", "Give me some analysis Rear Admiral.", "Rear Admiral, you're a legend of the game. Tell me why they just did that.", "Did you ever see that in your day Rear Admiral?", "Tell the audience what you see, Rear Admiral!", "No way. Thoughts, Rear Admiral?", "We're still watching, but not much is happening.", "That's a pass!", "Steals it!", "From left. To right. And back again.", "They begin to move upfield.", "Speedy shuffle pass.", "There's the one-two combo!", "Can they get there?", "Here they come!", "Okay then...", "No can do that!", "That's a sure thing.", "They better not mess this up!", "So, what now Rear Admiral?", "Give me a hot take Rear Admiral." ]
     statement = bored_statements[rand(bored_statements.size)]
     puts "[THRILLIUS MOTT]\n#{statement}"
     `say "#{statement}"`
@@ -108,13 +108,13 @@ def snitch_sequence(team1_roster, team2_roster, scores, teams)
   puts "[THRILLIUS MOTT]\nWait! They're closing in on the snitch!"
   `say "Wait! They're closing in on the snitch!"`
   puts "\n"
-  puts "[CLIFTON HAZELNUTS]\nWho will get there?"
+  puts "[REAR ADMIRAL RABB]\nWho will get there?"
   `say "Who will get there?"`
   puts "\n"
   puts "[THRILLIUS MOTT]\nIt's gonna be close..."
   `say "It's gonna be close..."`
   puts "\n"
-  puts "[CLIFTON HAZELNUTS]\nLook!"
+  puts "[REAR ADMIRAL RABB]\nLook!"
   `say "Look!"`
   puts "\n"
   snitch_roll = rand(5)
@@ -191,8 +191,8 @@ def game
   puts "[THRILLIUS MOTT]\nI'm Thrillius Mott."
   `say "I'm Thrillius Mott."`
   puts "\n"
-  puts "[CLIFTON HAZELNUTS]\nAnd I'm Clifton Hazelnuts. Welcome to QSPN."
-  `say "And I'm Clifton Hazelnuts. Welcome to QSPN."`
+  puts "[REAR ADMIRAL RABB]\nAnd I'm Rear Admiral Rabb. Welcome to QSPN."
+  `say "And I'm Rear Admiral Rabb. Welcome to QSPN."`
   puts "\n"
   puts "[THRILLIUS MOTT]\nToday's matchup is between #{teams[0]} and #{teams[1]}."
   `say "Today's matchup is between #{teams[0]} and #{teams[1]}."`
@@ -227,7 +227,7 @@ def game
 
   team1_roster = select_team1_roster(players)
   
-  puts "[CLIFTON HAZELNUTS]\nThe #{teams[0]} roster is:"
+  puts "[REAR ADMIRAL RABB]\nThe #{teams[0]} roster is:"
   `say "The #{teams[0]} roster is:"`
   position_roster(positions, team1_roster)
 
@@ -239,7 +239,7 @@ def game
   team1_score = 0
   team2_score = 0
   scores = [ team1_score, team2_score ]
-  puts "[CLIFTON HAZELNUTS]\nLet's get today's game started. The score is #{teams[0]} #{scores[0]} - #{teams[1]} #{scores[1]} because that's how games start."
+  puts "[REAR ADMIRAL RABB]\nLet's get today's game started. The score is #{teams[0]} #{scores[0]} - #{teams[1]} #{scores[1]} because that's how games start."
   `say "Let's get today's game started. The score is #{teams[0]} #{scores[0]} to #{teams[1]} #{scores[1]} because that's how games start."`
   puts "\n"
   sleep 1
@@ -263,11 +263,11 @@ def game
     sleep_timer = [ 0.1, 0.2, 0.3 ]
     sleep sleep_timer[rand(sleep_timer.size)]
     game_over = game_event(team1_roster, team2_roster, scores, teams)
-    phrases = [ "GREAT GRINGOTTS THRILLIUS!", "Crazy game, eh Thrillius?!", "Quidditch is quite grand, Thrillius. Quite grand.", "It's #{scores[0]} to #{scores[1]}.", "The player who must not be named!", "As potent as a polyjuice potion.", "Back from the dead! Rise phoenix! Fly like the feathered furball you are!", "Find some floo powder. They're on fire!", "That'll be on the Daily Prophet front page Thrillius!", "Are they drinking unicorn blood, Thrillius?", "What a performance we're seeing!", "Magical! Just magical!", "BOOMSHAKALAKA!", "The stuff of witchcraft legends!", "Even a muggle would love that.", "I'm speechless. DID YOU SEE THAT?", "WHOA! The snitch just spilled my butter beer!", "Has anyone seen the snitch?", "Between the legs!" , "That robe is falling apart. Wardrobe malfunction!", "I'd like to apparate on down to Chomper's Chicken Shack to be honest. I had a late night, and I could use some pumpkin juice fried chicken wings. Maybe polish it off with some chocolate frogs.", "It's a flying V!", "Well. You need to stay on your broom to win at this sport Thrillius.", "There's nothing wrong with an old-fashioned clobberfest.", "Bet they're buzzed at the Hog's Head tonight after that Thrillius!", "Quaffle. Quaffle. Waffle! Now that's some ball movement with a drizzle of syrup.", "Un-BLUDGE-lievable!", "Snap. Crackle. Pop. The bones met a rock.", "Get out the Skele-grow Thrillius!", "WILD SHOT!", "From Diagon Alley!", "That keeper's gone cr-cr-cr-crazy!", "Can you say Nimbus 9000 Thrillius?", "Sneaky play. Welcome to the sly wizard tournament.", "Put your wand away Thrillius.", "Someone call the gambling goblin! I got galleons to burn.", "NO! NO! NO!", "As sweet as a Cauldron Cake!", "I'm not sure if I want to vomit or chug my butter beer. That play was as tasty and disgusting as a Bertie Botts Every Flavored Bean.", "TAKING THE KNIGHT BUS TO NOWHERE!", "What a steal! It's like a hinkypunk hoe down.", "Ahhh OOOOOOOOO. Howl baby! The werewolves are out tonight!", "Accio goals!", "Well Dumble my Dore.", "Wamp. That. Willow.", "Great balls of dragon fire!", "Sent like a centaur!", "That seeker is sneakier than a house elf.", "I don't like seekers.", "They put the dumb in Dumbledore.", "They're colder than a dementor's tonsels.", "They've got more drive than a death eater.", "Did they just apparate?", "I bet if they looked at a boggart all they'd see is a bludgeon.", "Great gillyweed! Lock 'em in Azkaban!", "Oof. The crowd is moaning like a mess of mandrakes.", "Hoot. Hoot. Hoot. Hoot. HOOT. The owls are out Thrillius!", "Well you go and butter my beer then.", "Change in quaffle possession! They put the mug in muggle.", "Grab a portkey! We're going to Hogsmeade.", "Good goblins! That was gratuitous!", "That went through them like a ghost!", "They're deader than all the birds that aren't phoenixes.", "Where are my pumpkin chicken wings?!", "Hold on. I'm pouring myself a shot of fire whiskey.", "The crowd is angrier than an acromantula.", "Divination engaged! Now get me the gambling goblin.", "Well there goes a galleon.", "Hey Thrillius, you want to bet a galleon on that happening again?", "That reminded me of merpeople. Blah.", "Thrillius. Make a bet with me.", "Thrillius. I'll bet you a galleon that robe falls off on the next play.", "ENGORGIO!", "They're flopping around like some flobberworms.", "Skele-grow. Skele-grow. Skele-grow.", "The crowd is celebrating like some house elves with some dirty laundry!", "Was that a sloth grip roll to dodge that bludger?", "Even a squib can seek better than that.", "Sometimes I just don't know about this sport.", "Wait. What's the score Thrillius?", "Unforgivable annihalation!", "Incendio!", "I'm down to my last sickles. Come here you gambling goblin.", "This game is giving me a headache. Time for a tipple at the Leaky Cauldron.", "PUMPKIN. CHICKEN. WINGS." ]
+    phrases = [ "GREAT GRINGOTTS THRILLIUS!", "Crazy game, eh Thrillius?!", "Quidditch is quite grand, Thrillius. Quite grand.", "It's #{scores[0]} to #{scores[1]}.", "The player who must not be named!", "As potent as a polyjuice potion.", "Back from the dead! Rise phoenix! Fly like the feathered furball you are!", "Find some floo powder. They're on fire!", "That'll be on the Daily Prophet front page Thrillius!", "Are they drinking unicorn blood, Thrillius?", "What a performance we're seeing!", "Magical! Just magical!", "BOOMSHAKALAKA!", "The stuff of witchcraft legends!", "Even a muggle would love that.", "I'm speechless. DID YOU SEE THAT?", "WHOA! The snitch just spilled my butter beer!", "Has anyone seen the snitch?", "Between the legs!" , "That robe is falling apart. Wardrobe malfunction!", "I'd like to apparate on down to Chomper's Chicken Shack to be honest. I had a late night, and I could use some pumpkin juice fried chicken wings. Maybe polish it off with some chocolate frogs.", "It's a flying V!", "Well. You need to stay on your broom to win at this sport Thrillius.", "There's nothing wrong with an old-fashioned clobberfest.", "Bet they're buzzed at the Hog's Head tonight after that Thrillius!", "Quaffle. Quaffle. Waffle! Now that's some ball movement with a drizzle of syrup.", "Un-BLUDGE-lievable!", "Snap. Crackle. Pop. The bones met a rock.", "Get out the Skele-grow Thrillius!", "WILD SHOT!", "From Diagon Alley!", "That keeper's gone cr-cr-cr-crazy!", "Can you say Nimbus 9000 Thrillius?", "Sneaky play. Welcome to the sly wizard tournament.", "Put your wand away Thrillius.", "Someone call the gambling goblin! I got galleons to burn.", "NO! NO! NO!", "As sweet as a Cauldron Cake!", "I'm not sure if I want to vomit or chug my butter beer. That play was as tasty and disgusting as a Bertie Botts Every Flavored Bean.", "TAKING THE KNIGHT BUS TO NOWHERE!", "What a steal! It's like a hinkypunk hoe down.", "Ahhh OOOOOOOOO. Howl baby! The werewolves are out tonight!", "Accio goals!", "Well Dumble my Dore.", "Wamp. That. Willow.", "Great balls of dragon fire!", "Sent like a centaur!", "That seeker is sneakier than a house elf.", "I don't like seekers.", "They put the dumb in Dumbledore.", "They're colder than a dementor's tonsels.", "They've got more drive than a death eater.", "Did they just apparate?", "I bet if they looked at a boggart all they'd see is a bludgeon.", "Great gillyweed! Lock 'em in Azkaban!", "Oof. The crowd is moaning like a mess of mandrakes.", "Hoot. Hoot. Hoot. Hoot. HOOT. The owls are out Thrillius!", "Well you go and butter my beer then.", "Change in quaffle possession! They put the mug in muggle.", "Grab a portkey! We're going to Hogsmeade.", "Good goblins! That was gratuitous!", "That went through them like a ghost!", "They're deader than all the birds that aren't phoenixes.", "Where are my pumpkin chicken wings?!", "Hold on. I'm pouring myself a shot of fire whiskey.", "The crowd is angrier than an acromantula.", "Divination engaged! Now get me the gambling goblin.", "Well there goes a galleon.", "Hey Thrillius, you want to bet a galleon on that happening again?", "That reminded me of merpeople. Blah.", "Thrillius. Make a bet with me.", "Thrillius. I'll bet you a galleon that robe falls off on the next play.", "ENGORGIO!", "They're flopping around like some flobberworms.", "Skele-grow. Skele-grow. Skele-grow.", "The crowd is celebrating like some house elves with some dirty laundry!", "Was that a sloth grip roll to dodge that bludger?", "Even a squib can seek better than that.", "Sometimes I just don't know about this sport.", "Wait. What's the score Thrillius?", "Unforgivable annihilation!", "Incendio!", "I'm down to my last sickles. Come here you gambling goblin.", "This game is giving me a headache. Time for a tipple at the Leaky Cauldron.", "PUMPKIN. CHICKEN. WINGS." ]
     chatty = rand(3)
     if chatty <= 1
       comment = phrases[rand(phrases.size)]
-      puts "[CLIFTON HAZELNUTS]\n#{comment}"
+      puts "[REAR ADMIRAL RABB]\n#{comment}"
       `say "#{comment}"`
       puts "\n"
     end
@@ -301,7 +301,7 @@ def game
     winner = "Nobody"
   end
   puts "\n"
-  puts "[CLIFTON HAZELNUTS]\nThe player of the game is #{mvp}.\n"
+  puts "[REAR ADMIRAL RABB]\nThe player of the game is #{mvp}.\n"
   `say "The player of the game is #{mvp}!"`
   if winner == "Gryffindor"
     puts "                    ,."
