@@ -188,8 +188,8 @@ def game
   puts "\n"
   sleep 1
 
-  puts "[TANNE LEGIN]\nI'm Tanne Mott."
-  `say "I'm Tanne Mott."`
+  puts "[TANNE LEGIN]\nI'm Tanne LeGin."
+  `say "I'm Tanne LeGin."`
   puts "\n"
   puts "[CLIFTON HAZELNUTS]\nAnd I'm Clifton Hazelnuts. Welcome to QSPN."
   `say "And I'm Clifton Hazelnuts. Welcome to QSPN."`
