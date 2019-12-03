@@ -76,25 +76,25 @@ def game_event(team1_roster, team2_roster, scores, teams)
   end
   if event_chance < 42
     scorer = chasers[rand(chasers.size)]
-    puts "[THRILLIUS MOTT]\n#{scorer} scores for #{teams[team_chance]}!"
+    puts "[TANNE LEGIN]\n#{scorer} scores for #{teams[team_chance]}!"
     scores[team_chance] = scores[team_chance] + 10
     puts "The score is now #{teams[0]} #{scores[0]} - #{teams[1]} #{scores[1]}."
     `say "#{scorer}. Goal for #{teams[team_chance]}!"`
   elsif event_chance >= 42 && event_chance < 61
     save_type = [ "absurd", "stupendous", "mystical", "flexible", "mind bending", "transfigure-tastic", "phoenician" ]
     save_choice = "#{save_type[rand(save_type.size)]} save"
-    puts "[THRILLIUS MOTT]\n#{keeper} with the #{save_choice} for #{teams[team_chance]}!"
+    puts "[TANNE LEGIN]\n#{keeper} with the #{save_choice} for #{teams[team_chance]}!"
     `say "#{keeper} with a #{save_choice}!"`
   elsif event_chance >= 61 && event_chance < 80
     hitter = beaters[rand(beaters.size)]
     hit_type = [ "Bone crushing!", "That's broken!", "CRUNCH!", "Bones are broken!", "Big time bruises there.", "Ouch.", "That's gonna leave a dark mark.", "Bludgeon attack!", "Bludging spree!", "Beater beatdown!", "Boom goes the bludgeon.", "Pretty soft slap.", "Bruise cruise.", "Just a flesh wound." ]
     hit_choice = hit_type[rand(hit_type.size)]
-    puts "[THRILLIUS MOTT]\n#{hitter} on #{teams[team_chance]} just crushed #{teams[ 1 - team_chance ]} player #{target} with a bludger. #{hit_choice}"
+    puts "[TANNE LEGIN]\n#{hitter} on #{teams[team_chance]} just crushed #{teams[ 1 - team_chance ]} player #{target} with a bludger. #{hit_choice}"
     `say "#{hitter} bludgeoned #{target}. #{hit_choice}"`
   elsif event_chance >= 80 && event_chance < 97
     bored_statements = [ "Lots of movement but no big plays. Thoughts Clifton?", "Still #{scores[0]} to #{scores[1]} here Clifton.", "Maybe. Maybe?", "BORING!", "Aim for the hoops! THE HOOPS!", "Do something you bozos. What do you think, Clifton?", "That's not how you play Quidditch! You're doing nothing.", "They look like a bunch of muggles out there, Clifton.", "What was that?", "Um. Clifton, are you seeing this?", "They just keep going in circles, Clifton.", "This could not have been the game plan, Clifton.", "Where did that come from?", "Give me some analysis Clifton.", "Clifton, you're a legend of the game. Tell me why they just did that.", "Did you ever see that in your day Clifton?", "Tell the audience what you see, Clifton!", "No way. Thoughts, Clifton?", "We're still watching, but not much is happening.", "That's a pass!", "Steals it!", "From left. To right. And back again.", "They begin to move upfield.", "Speedy shuffle pass.", "There's the one-two combo!", "Can they get there?", "Here they come!", "Okay then...", "No can do that!", "That's a sure thing.", "They better not mess this up!", "So, what now Clifton?", "Give me a hot take Clifton." ]
     statement = bored_statements[rand(bored_statements.size)]
-    puts "[THRILLIUS MOTT]\n#{statement}"
+    puts "[TANNE LEGIN]\n#{statement}"
     `say "#{statement}"`
   elsif event_chance >= 97 && event_chance < 100
     game_over = snitch_sequence(team1_roster, team2_roster, scores, teams)
@@ -105,13 +105,13 @@ end
 
 # The sequence if the snitch is near a seeker!
 def snitch_sequence(team1_roster, team2_roster, scores, teams)
-  puts "[THRILLIUS MOTT]\nWait! They're closing in on the snitch!"
+  puts "[TANNE LEGIN]\nWait! They're closing in on the snitch!"
   `say "Wait! They're closing in on the snitch!"`
   puts "\n"
   puts "[CLIFTON HAZELNUTS]\nWho will get there?"
   `say "Who will get there?"`
   puts "\n"
-  puts "[THRILLIUS MOTT]\nIt's gonna be close..."
+  puts "[TANNE LEGIN]\nIt's gonna be close..."
   `say "It's gonna be close..."`
   puts "\n"
   puts "[CLIFTON HAZELNUTS]\nLook!"
@@ -123,24 +123,24 @@ def snitch_sequence(team1_roster, team2_roster, scores, teams)
     if scores[snitch_roll] == scores[1 - snitch_roll] - 150 && scores[0] + scores[1] > 200
     # if scores[0] == scores[1] - 150 && scores[0] + scores[1] > 100
       scores[snitch_roll] = scores[snitch_roll] + 150
-      puts "[THRILLIUS MOTT]\n#{seekers[snitch_roll]} has caught the golden snitch for #{teams[snitch_roll]}! 150 points and the tie!"
+      puts "[TANNE LEGIN]\n#{seekers[snitch_roll]} has caught the golden snitch for #{teams[snitch_roll]}! 150 points and the tie!"
       `say "#{seekers[snitch_roll]} has caught the golden snitch for #{teams[snitch_roll]}! 150 points and the tie!"`
       caught = true
     elsif scores[snitch_roll] > scores[1 - snitch_roll] - 150
     # elsif scores[0] > scores[1] - 150
       scores[snitch_roll] = scores[snitch_roll] + 150
-      puts "[THRILLIUS MOTT]\n#{seekers[snitch_roll]} has caught the golden snitch for #{teams[snitch_roll]}! 150 points and the win!"
+      puts "[TANNE LEGIN]\n#{seekers[snitch_roll]} has caught the golden snitch for #{teams[snitch_roll]}! 150 points and the win!"
       `say "#{seekers[snitch_roll]} has caught the golden snitch for #{teams[snitch_roll]}! 150 points and the win!"`
       caught = true
     else
-      puts "[THRILLIUS MOTT]\n#{seekers[snitch_roll]} on #{teams[snitch_roll]} blocks #{seekers[1 - snitch_roll]} from getting the golden snitch and the win for #{teams[1 - snitch_roll]}!"
+      puts "[TANNE LEGIN]\n#{seekers[snitch_roll]} on #{teams[snitch_roll]} blocks #{seekers[1 - snitch_roll]} from getting the golden snitch and the win for #{teams[1 - snitch_roll]}!"
       `say "#{seekers[snitch_roll]} on #{teams[snitch_roll]} blocks #{seekers[1 - snitch_roll]} from getting the golden snitch and the win for #{teams[1 - snitch_roll]}!"`
       caught = false
     end
   else
     lost_snitch = [ "The seekers have collided and fallen off their brooms! What a disaster. The snitch has vanished.", "They're diving for the ground. And they hit it! The snitch didn't though. On we go.", "Look at that! A bludger just smacked them both off the trail. The snitch escapes!", "They just stopped. Maybe the sun got in their eyes? That's just bad seeking, but the snitch has faded back into oblivion." ]
     lost_statement = lost_snitch[rand(lost_snitch.size)]
-    puts "[THRILLIUS MOTT]\n#{lost_statement}"
+    puts "[TANNE LEGIN]\n#{lost_statement}"
     `say "#{lost_statement}"`
     caught = false
   end
@@ -188,13 +188,13 @@ def game
   puts "\n"
   sleep 1
 
-  puts "[THRILLIUS MOTT]\nI'm Thrillius Mott."
-  `say "I'm Thrillius Mott."`
+  puts "[TANNE LEGIN]\nI'm Tanne Mott."
+  `say "I'm Tanne Mott."`
   puts "\n"
   puts "[CLIFTON HAZELNUTS]\nAnd I'm Clifton Hazelnuts. Welcome to QSPN."
   `say "And I'm Clifton Hazelnuts. Welcome to QSPN."`
   puts "\n"
-  puts "[THRILLIUS MOTT]\nToday's matchup is between #{teams[0]} and #{teams[1]}."
+  puts "[TANNE LEGIN]\nToday's matchup is between #{teams[0]} and #{teams[1]}."
   `say "Today's matchup is between #{teams[0]} and #{teams[1]}."`
   puts "\n"
   puts "[GAMBLING GOBLIN]\nWhat team do you want to bet on?"
@@ -232,7 +232,7 @@ def game
   position_roster(positions, team1_roster)
 
   team2_roster = select_team2_roster(players, team1_roster)
-  puts "[THRILLIUS MOTT]\nWhile the #{teams[1]} roster is:"
+  puts "[TANNE LEGIN]\nWhile the #{teams[1]} roster is:"
   `say "While the #{teams[1]} roster is:"`
   position_roster(positions, team2_roster)
 
@@ -243,7 +243,7 @@ def game
   `say "Let's get today's game started. The score is #{teams[0]} #{scores[0]} to #{teams[1]} #{scores[1]} because that's how games start."`
   puts "\n"
   sleep 1
-  puts "[THRILLIUS MOTT]\nI can't wait!"
+  puts "[TANNE LEGIN]\nI can't wait!"
   `say "I can't wait!"`
   puts "\n"
   sleep 1
@@ -255,7 +255,7 @@ def game
   `say "Tweet tweet tweet tweeweeweweeweeeeet!"`
   puts "\n"
   sleep 1
-  puts "[THRILLIUS MOTT]\nAnd we're off!"
+  puts "[TANNE LEGIN]\nAnd we're off!"
   `say "And we're off!"`
   puts "\n"
 
@@ -263,7 +263,7 @@ def game
     sleep_timer = [ 0.1, 0.2, 0.3 ]
     sleep sleep_timer[rand(sleep_timer.size)]
     game_over = game_event(team1_roster, team2_roster, scores, teams)
-    phrases = [ "GREAT GRINGOTTS THRILLIUS!", "Crazy game, eh Thrillius?!", "Quidditch is quite grand, Thrillius. Quite grand.", "It's #{scores[0]} to #{scores[1]}.", "The player who must not be named!", "As potent as a polyjuice potion.", "Back from the dead! Rise phoenix! Fly like the feathered furball you are!", "Find some floo powder. They're on fire!", "That'll be on the Daily Prophet front page Thrillius!", "Are they drinking unicorn blood, Thrillius?", "What a performance we're seeing!", "Magical! Just magical!", "BOOMSHAKALAKA!", "The stuff of witchcraft legends!", "Even a muggle would love that.", "I'm speechless. DID YOU SEE THAT?", "WHOA! The snitch just spilled my butter beer!", "Has anyone seen the snitch?", "Between the legs!" , "That robe is falling apart. Wardrobe malfunction!", "I'd like to apparate on down to Chomper's Chicken Shack to be honest. I had a late night, and I could use some pumpkin juice fried chicken wings. Maybe polish it off with some chocolate frogs.", "It's a flying V!", "Well. You need to stay on your broom to win at this sport Thrillius.", "There's nothing wrong with an old-fashioned clobberfest.", "Bet they're buzzed at the Hog's Head tonight after that Thrillius!", "Quaffle. Quaffle. Waffle! Now that's some ball movement with a drizzle of syrup.", "Un-BLUDGE-lievable!", "Snap. Crackle. Pop. The bones met a rock.", "Get out the Skele-grow Thrillius!", "WILD SHOT!", "From Diagon Alley!", "That keeper's gone cr-cr-cr-crazy!", "Can you say Nimbus 9000 Thrillius?", "Sneaky play. Welcome to the sly wizard tournament.", "Put your wand away Thrillius.", "Someone call the gambling goblin! I got galleons to burn.", "NO! NO! NO!", "As sweet as a Cauldron Cake!", "I'm not sure if I want to vomit or chug my butter beer. That play was as tasty and disgusting as a Bertie Botts Every Flavored Bean.", "TAKING THE KNIGHT BUS TO NOWHERE!", "What a steal! It's like a hinkypunk hoe down.", "Ahhh OOOOOOOOO. Howl baby! The werewolves are out tonight!", "Accio goals!", "Well Dumble my Dore.", "Wamp. That. Willow.", "Great balls of dragon fire!", "Sent like a centaur!", "That seeker is sneakier than a house elf.", "I don't like seekers.", "They put the dumb in Dumbledore.", "They're colder than a dementor's tonsels.", "They've got more drive than a death eater.", "Did they just apparate?", "I bet if they looked at a boggart all they'd see is a bludgeon.", "Great gillyweed! Lock 'em in Azkaban!", "Oof. The crowd is moaning like a mess of mandrakes.", "Hoot. Hoot. Hoot. Hoot. HOOT. The owls are out Thrillius!", "Well you go and butter my beer then.", "Change in quaffle possession! They put the mug in muggle.", "Grab a portkey! We're going to Hogsmeade.", "Good goblins! That was gratuitous!", "That went through them like a ghost!", "They're deader than all the birds that aren't phoenixes.", "Where are my pumpkin chicken wings?!", "Hold on. I'm pouring myself a shot of fire whiskey.", "The crowd is angrier than an acromantula.", "Divination engaged! Now get me the gambling goblin.", "Well there goes a galleon.", "Hey Thrillius, you want to bet a galleon on that happening again?", "That reminded me of merpeople. Blah.", "Thrillius. Make a bet with me.", "Thrillius. I'll bet you a galleon that robe falls off on the next play.", "ENGORGIO!", "They're flopping around like some flobberworms.", "Skele-grow. Skele-grow. Skele-grow.", "The crowd is celebrating like some house elves with some dirty laundry!", "Was that a sloth grip roll to dodge that bludger?", "Even a squib can seek better than that.", "Sometimes I just don't know about this sport.", "Wait. What's the score Thrillius?", "Unforgivable annihilation!", "Incendio!", "I'm down to my last sickles. Come here you gambling goblin.", "This game is giving me a headache. Time for a tipple at the Leaky Cauldron.", "PUMPKIN. CHICKEN. WINGS." ]
+    phrases = [ "GREAT GRINGOTTS TANNE!", "Crazy game, eh Tanne?!", "Quidditch is quite grand, Tanne. Quite grand.", "It's #{scores[0]} to #{scores[1]}.", "The player who must not be named!", "As potent as a polyjuice potion.", "Back from the dead! Rise phoenix! Fly like the feathered furball you are!", "Find some floo powder. They're on fire!", "That'll be on the Daily Prophet front page Tanne!", "Are they drinking unicorn blood, Tanne?", "What a performance we're seeing!", "Magical! Just magical!", "BOOMSHAKALAKA!", "The stuff of witchcraft legends!", "Even a muggle would love that.", "I'm speechless. DID YOU SEE THAT?", "WHOA! The snitch just spilled my butter beer!", "Has anyone seen the snitch?", "Between the legs!" , "That robe is falling apart. Wardrobe malfunction!", "I'd like to apparate on down to Chomper's Chicken Shack to be honest. I had a late night, and I could use some pumpkin juice fried chicken wings. Maybe polish it off with some chocolate frogs.", "It's a flying V!", "Well. You need to stay on your broom to win at this sport Tanne.", "There's nothing wrong with an old-fashioned clobberfest.", "Bet they're buzzed at the Hog's Head tonight after that Tanne!", "Quaffle. Quaffle. Waffle! Now that's some ball movement with a drizzle of syrup.", "Un-BLUDGE-lievable!", "Snap. Crackle. Pop. The bones met a rock.", "Get out the Skele-grow Tanne!", "WILD SHOT!", "From Diagon Alley!", "That keeper's gone cr-cr-cr-crazy!", "Can you say Nimbus 9000 Tanne?", "Sneaky play. Welcome to the sly wizard tournament.", "Put your wand away Tanne.", "Someone call the gambling goblin! I got galleons to burn.", "NO! NO! NO!", "As sweet as a Cauldron Cake!", "I'm not sure if I want to vomit or chug my butter beer. That play was as tasty and disgusting as a Bertie Botts Every Flavored Bean.", "TAKING THE KNIGHT BUS TO NOWHERE!", "What a steal! It's like a hinkypunk hoe down.", "Ahhh OOOOOOOOO. Howl baby! The werewolves are out tonight!", "Accio goals!", "Well Dumble my Dore.", "Wamp. That. Willow.", "Great balls of dragon fire!", "Sent like a centaur!", "That seeker is sneakier than a house elf.", "I don't like seekers.", "They put the dumb in Dumbledore.", "They're colder than a dementor's tonsels.", "They've got more drive than a death eater.", "Did they just apparate?", "I bet if they looked at a boggart all they'd see is a bludgeon.", "Great gillyweed! Lock 'em in Azkaban!", "Oof. The crowd is moaning like a mess of mandrakes.", "Hoot. Hoot. Hoot. Hoot. HOOT. The owls are out Tanne!", "Well you go and butter my beer then.", "Change in quaffle possession! They put the mug in muggle.", "Grab a portkey! We're going to Hogsmeade.", "Good goblins! That was gratuitous!", "That went through them like a ghost!", "They're deader than all the birds that aren't phoenixes.", "Where are my pumpkin chicken wings?!", "Hold on. I'm pouring myself a shot of fire whiskey.", "The crowd is angrier than an acromantula.", "Divination engaged! Now get me the gambling goblin.", "Well there goes a galleon.", "Hey Tanne, you want to bet a galleon on that happening again?", "That reminded me of merpeople. Blah.", "Tanne. Make a bet with me.", "Tanne. I'll bet you a galleon that robe falls off on the next play.", "ENGORGIO!", "They're flopping around like some flobberworms.", "Skele-grow. Skele-grow. Skele-grow.", "The crowd is celebrating like some house elves with some dirty laundry!", "Was that a sloth grip roll to dodge that bludger?", "Even a squib can seek better than that.", "Sometimes I just don't know about this sport.", "Wait. What's the score Tanne?", "Unforgivable annihilation!", "Incendio!", "I'm down to my last sickles. Come here you gambling goblin.", "This game is giving me a headache. Time for a tipple at the Leaky Cauldron.", "PUMPKIN. CHICKEN. WINGS." ]
     chatty = rand(3)
     if chatty <= 1
       comment = phrases[rand(phrases.size)]
@@ -275,7 +275,7 @@ def game
       break
     end
   end
-  puts "[THRILLIUS MOTT]\nThe final score is #{teams[0]} #{scores[0]} - #{teams[1]} #{scores[1]}."
+  puts "[TANNE LEGIN]\nThe final score is #{teams[0]} #{scores[0]} - #{teams[1]} #{scores[1]}."
   `say "The final score is #{teams[0]} #{scores[0]}, #{teams[1]} #{scores[1]}."`
   puts "\n"
   new_position = rand(2)
@@ -287,16 +287,16 @@ def game
       winner = teams[1]
       mvp = team2_roster[rand(team2_roster.size)]
     end
-    puts "[THRILLIUS MOTT]\n#{winner} wins!\n"
+    puts "[TANNE LEGIN]\n#{winner} wins!\n"
     `say "#{winner} wins!"`
   elsif new_position.odd?
     mvp = team2_roster[rand(team2_roster.size)]
-    puts "[THRILLIUS MOTT]\nTie game!\n"
+    puts "[TANNE LEGIN]\nTie game!\n"
     `say "Tie game!"`
     winner = "Nobody"
   else
     mvp = team1_roster[rand(team1_roster.size)]
-    puts "[THRILLIUS MOTT]\nTie game!\n"
+    puts "[TANNE LEGIN]\nTie game!\n"
     `say "Tie game!"`
     winner = "Nobody"
   end
